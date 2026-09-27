@@ -11,6 +11,13 @@ import { ProductDetail } from './pages/storefront/ProductDetail';
 import { Cart } from './pages/storefront/Cart';
 import { Checkout } from './pages/storefront/Checkout';
 import { OrderSuccess } from './pages/storefront/OrderSuccess';
+import { Wishlist } from './pages/storefront/Wishlist';
+import { About } from './pages/storefront/About';
+import { Contact } from './pages/storefront/Contact';
+import { FAQ } from './pages/storefront/FAQ';
+import { PrivacyPolicy } from './pages/storefront/PrivacyPolicy';
+import { TermsConditions } from './pages/storefront/TermsConditions';
+import { NotFound } from './pages/storefront/NotFound';
 
 export default function App() {
   return (
@@ -30,7 +37,13 @@ export default function App() {
                   <Route path="/cart" element={<Cart />} />
                   <Route path="/checkout" element={<Checkout />} />
                   <Route path="/order-success" element={<OrderSuccess />} />
-                  <Route path="*" element={<Home />} />
+                  <Route path="/wishlist" element={<Wishlist />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/faq" element={<FAQ />} />
+                  <Route path="/privacy" element={<PrivacyPolicy />} />
+                  <Route path="/terms" element={<TermsConditions />} />
+                  <Route path="*" element={<NotFound />} />
                 </Route>
               </Routes>
             </AdminAuthProvider>

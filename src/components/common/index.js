@@ -4,6 +4,7 @@ export { Modal } from './Modal';
 export { EmptyState } from './EmptyState';
 export {
   GenericSkeleton,
+  GenericSkeleton as LoadingSkeleton,
   ProductCardSkeleton,
   TableRowSkeleton,
   ProductDetailSkeleton,

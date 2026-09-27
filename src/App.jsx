@@ -6,6 +6,8 @@ import { WishlistProvider } from './context/WishlistContext';
 import { AdminAuthProvider } from './context/AdminAuthContext';
 import { MainLayout } from './components/layout/MainLayout';
 import { Home } from './pages/storefront/Home';
+import { Shop } from './pages/storefront/Shop';
+import { ProductDetail } from './pages/storefront/ProductDetail';
 
 export default function App() {
   return (
@@ -18,11 +20,10 @@ export default function App() {
                 {/* Storefront Layout */}
                 <Route element={<MainLayout />}>
                   <Route path="/" element={<Home />} />
-                  <Route path="/shop" element={<Home />} />
-                  <Route path="/category/:slug" element={<Home />} />
-                  <Route path="/product/:slug" element={<Home />} />
-                  <Route path="/cart" element={<Home />} />
-                  <Route path="/wishlist" element={<Home />} />
+                  <Route path="/shop" element={<Shop />} />
+                  <Route path="/category/:slug" element={<Shop />} />
+                  <Route path="/search" element={<Shop />} />
+                  <Route path="/product/:slug" element={<ProductDetail />} />
                   <Route path="*" element={<Home />} />
                 </Route>
               </Routes>

@@ -19,6 +19,13 @@ import { PrivacyPolicy } from './pages/storefront/PrivacyPolicy';
 import { TermsConditions } from './pages/storefront/TermsConditions';
 import { NotFound } from './pages/storefront/NotFound';
 
+// Admin imports
+import { AdminLayout } from './components/admin/AdminLayout';
+import { AdminLogin } from './pages/admin/AdminLogin';
+import { Dashboard } from './pages/admin/Dashboard';
+import { ProductList } from './pages/admin/ProductList';
+import { ProductForm } from './pages/admin/ProductForm';
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -27,7 +34,20 @@ export default function App() {
           <WishlistProvider>
             <AdminAuthProvider>
               <Routes>
-                {/* Storefront Layout */}
+                {/* Admin Auth Route */}
+                <Route path="/admin/login" element={<AdminLogin />} />
+
+                {/* Admin Dashboard Protected Routes */}
+                <Route path="/admin" element={<AdminLayout />}>
+                  <Route index element={<Dashboard />} />
+                  <Route path="products" element={<ProductList />} />
+                  <Route path="products/new" element={<ProductForm />} />
+                  <Route path="products/:id" element={<ProductForm />} />
+                  {/* Additional admin operational modules will connect in Part 8 */}
+                  <Route path="*" element={<Dashboard />} />
+                </Route>
+
+                {/* Customer Storefront Layout */}
                 <Route element={<MainLayout />}>
                   <Route path="/" element={<Home />} />
                   <Route path="/shop" element={<Shop />} />

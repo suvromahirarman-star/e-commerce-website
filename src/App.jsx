@@ -25,6 +25,13 @@ import { AdminLogin } from './pages/admin/AdminLogin';
 import { Dashboard } from './pages/admin/Dashboard';
 import { ProductList } from './pages/admin/ProductList';
 import { ProductForm } from './pages/admin/ProductForm';
+import { Orders } from './pages/admin/Orders';
+import { Inventory } from './pages/admin/Inventory';
+import { Customers } from './pages/admin/Customers';
+import { Coupons } from './pages/admin/Coupons';
+import { Reviews } from './pages/admin/Reviews';
+import { ContentCMS } from './pages/admin/ContentCMS';
+import { Settings } from './pages/admin/Settings';
 
 export default function App() {
   return (
@@ -43,7 +50,13 @@ export default function App() {
                   <Route path="products" element={<ProductList />} />
                   <Route path="products/new" element={<ProductForm />} />
                   <Route path="products/:id" element={<ProductForm />} />
-                  {/* Additional admin operational modules will connect in Part 8 */}
+                  <Route path="orders" element={<Orders />} />
+                  <Route path="inventory" element={<Inventory />} />
+                  <Route path="customers" element={<Customers />} />
+                  <Route path="coupons" element={<Coupons />} />
+                  <Route path="reviews" element={<Reviews />} />
+                  <Route path="content" element={<ContentCMS />} />
+                  <Route path="settings" element={<Settings />} />
                   <Route path="*" element={<Dashboard />} />
                 </Route>
 

@@ -36,6 +36,27 @@ const defaultCmsContent = {
   },
 };
 
+const SETTINGS_STORAGE_KEY = 'aura_store_settings';
+
+const defaultStoreSettings = {
+  storeName: 'AURA Studio',
+  storeTagline: 'Modern Architectural Fashion & Objects',
+  supportEmail: 'concierge@aurastudio.com',
+  supportPhone: '+880 1712 345 678',
+  addressLine1: 'House 14, Road 11, Block D',
+  city: 'Banani, Dhaka 1213',
+  country: 'Bangladesh',
+  currency: 'BDT (৳)',
+  insideDhakaShipping: 60,
+  outsideDhakaShipping: 120,
+  freeShippingThreshold: 3000,
+  taxRatePercent: 0,
+  enableGuestCheckout: true,
+  enableCod: true,
+  enableBkash: true,
+  maintenanceMode: false,
+};
+
 export const adminService = {
   /**
    * Get high-level dashboard KPIs and charts
@@ -145,6 +166,33 @@ export const adminService = {
     } catch (e) {
       console.error('Failed to save homepage CMS:', e);
       return defaultCmsContent;
+    }
+  },
+
+  /**
+   * Get store operational settings
+   */
+  getStoreSettings() {
+    try {
+      const saved = localStorage.getItem(SETTINGS_STORAGE_KEY);
+      return saved ? { ...defaultStoreSettings, ...JSON.parse(saved) } : defaultStoreSettings;
+    } catch (e) {
+      return defaultStoreSettings;
+    }
+  },
+
+  /**
+   * Update store operational settings
+   */
+  updateStoreSettings(newSettings) {
+    try {
+      const current = this.getStoreSettings();
+      const merged = { ...current, ...newSettings };
+      localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(merged));
+      return merged;
+    } catch (e) {
+      console.error('Failed to save store settings:', e);
+      return defaultStoreSettings;
     }
   },
 };

@@ -2,27 +2,51 @@ import React from 'react';
 
 export function Badge({ children, variant = 'neutral', size = 'sm', className = '' }) {
   const variants = {
-    neutral: 'bg-neutral-100 text-neutral-800 border-neutral-200',
-    dark: 'bg-neutral-900 text-white border-neutral-800',
-    new: 'bg-neutral-900 text-white border-neutral-900 uppercase font-mono tracking-wider',
-    bestseller: 'bg-[#C45B32]/10 text-[#C45B32] border-[#C45B32]/30 font-medium',
-    sale: 'bg-rose-50 text-rose-700 border-rose-200 font-semibold',
-    limited: 'bg-amber-50 text-amber-800 border-amber-200 font-medium',
-    success: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    warning: 'bg-amber-50 text-amber-700 border-amber-200',
-    danger: 'bg-rose-50 text-rose-700 border-rose-200',
-    outline: 'bg-transparent text-neutral-600 border-neutral-300',
+    // Primary Orange Accent Badge
+    orange: 'bg-[#FF6B2C] text-white border-transparent font-semibold shadow-2xs',
+    
+    // Soft Orange Tint Badge
+    softOrange: 'bg-[#FFF1E8] text-[#C94716] border-[#FFE2D1] font-semibold',
+    
+    // New Arrivals Badge
+    new: 'bg-[#FF6B2C] text-white border-transparent font-mono tracking-wider uppercase font-semibold shadow-2xs',
+    
+    // Bestseller Badge
+    bestseller: 'bg-[#171717] text-white border-transparent font-sans font-medium',
+    
+    // Flash / Discount Sale
+    sale: 'bg-[#D64545] text-white border-transparent font-mono font-bold shadow-2xs',
+    
+    // Limited Stock Warning
+    limited: 'bg-[#FFF8F3] text-[#C98A16] border-[#FBEAD2] font-semibold',
+    
+    // Neutral White / Slate
+    neutral: 'bg-[#F2F2F2] text-[#171717] border-transparent font-medium',
+    
+    // Semantic Success
+    success: 'bg-[#EAF5EE] text-[#25855A] border-[#CDE8D8] font-medium',
+    
+    // Semantic Warning
+    warning: 'bg-[#FFF8F3] text-[#C98A16] border-[#FBEAD2] font-medium',
+    
+    // Semantic Danger
+    danger: 'bg-[#FDECEC] text-[#D64545] border-[#F9CACA] font-medium',
+    
+    // Outline
+    outline: 'bg-white text-[#171717] border-[#EAEAEA]',
   };
 
   const sizes = {
-    xs: 'text-[10px] px-1.5 py-0.5 rounded',
-    sm: 'text-xs px-2.5 py-1 rounded-md',
-    md: 'text-sm px-3 py-1.5 rounded-lg',
+    xs: 'text-[10px] px-2 py-0.5 rounded-md leading-normal',
+    sm: 'text-xs px-2.5 py-1 rounded-lg leading-normal',
+    md: 'text-sm px-3.5 py-1.5 rounded-xl leading-normal',
   };
 
   return (
     <span
-      className={`inline-flex items-center gap-1 border select-none ${variants[variant] || variants.neutral} ${sizes[size] || sizes.sm} ${className}`}
+      className={`inline-flex items-center gap-1 border select-none transition-colors ${
+        variants[variant] || variants.neutral
+      } ${sizes[size] || sizes.sm} ${className}`}
     >
       {children}
     </span>

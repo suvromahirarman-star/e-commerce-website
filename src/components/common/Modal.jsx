@@ -45,7 +45,7 @@ export function Modal({
             animate="visible"
             exit="exit"
             onClick={onClose}
-            className="fixed inset-0 bg-neutral-950/60 backdrop-blur-sm"
+            className="fixed inset-0 bg-[#171717]/60 backdrop-blur-xs"
           />
 
           {/* Dialog Container */}
@@ -54,13 +54,13 @@ export function Modal({
             initial="hidden"
             animate="visible"
             exit="exit"
-            className={`relative w-full ${maxWidth} bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden my-auto z-10`}
+            className={`relative w-full ${maxWidth} bg-white rounded-3xl border border-[#EAEAEA] shadow-[0_20px_60px_rgba(0,0,0,0.10)] overflow-hidden my-auto z-10`}
           >
             {/* Header */}
             {(title || showClose) && (
-              <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100">
+              <div className="flex items-center justify-between px-6 py-4.5 border-b border-[#F2F2F2]">
                 {title ? (
-                  <h3 className="text-base font-semibold text-neutral-900 tracking-tight">
+                  <h3 className="text-lg font-bold font-display text-[#171717] tracking-tight">
                     {title}
                   </h3>
                 ) : (
@@ -70,7 +70,7 @@ export function Modal({
                   <button
                     type="button"
                     onClick={onClose}
-                    className="p-1.5 rounded-lg text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 transition-colors cursor-pointer"
+                    className="p-2 rounded-xl text-[#666666] hover:text-[#FF6B2C] hover:bg-[#FFF8F3] transition-colors cursor-pointer"
                     aria-label="Close dialog"
                   >
                     <X className="w-5 h-5" />
@@ -87,3 +87,4 @@ export function Modal({
     </AnimatePresence>
   );
 }
+export default Modal;

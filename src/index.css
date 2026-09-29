@@ -1,28 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  --color-terracotta-50: #fdf5f2;
-  --color-terracotta-100: #faeae3;
-  --color-terracotta-200: #f5d6c8;
-  --color-terracotta-300: #eeb8a3;
-  --color-terracotta-400: #e49174;
-  --color-terracotta-500: #d66c48;
-  --color-terracotta-600: #c45b32;
-  --color-terracotta-700: #a44826;
-  --color-terracotta-800: #853c23;
-  --color-terracotta-900: #6e3522;
-  --color-terracotta-950: #3b190f;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+
+  /* Brand White & Orange Color Tokens */
+  --color-primary-orange: #FF6B2C;
+  --color-orange-hover: #E9571F;
+  --color-deep-orange: #C94716;
+  --color-soft-orange: #FFF1E8;
+  --color-secondary-bg: #FFF8F3;
+
+  --color-primary-text: #171717;
+  --color-secondary-text: #666666;
+  --color-muted-text: #999999;
+
+  --color-border-main: #EAEAEA;
+  --color-border-soft: #F2F2F2;
+
+  --color-status-success: #25855A;
+  --color-status-warning: #C98A16;
+  --color-status-error: #D64545;
+  --color-surface-dark: #171717;
+
+  /* Subtle Shadows */
+  --shadow-subtle: 0 4px 14px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.10);
+  --shadow-orange-glow: 0 8px 24px rgba(255, 107, 44, 0.28);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
   body {
-    background-color: #faf9f6;
-    color: #121214;
+    background-color: #FFFFFF;
+    color: #171717;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -34,13 +51,40 @@
   }
 }
 
-/* Editorial Serif & Mono Font Classes */
+/* Typography Hierarchy */
+.font-display {
+  font-family: 'Manrope', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
 .font-editorial {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Manrope', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-sans {
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
 .font-tech {
   font-family: 'Space Grotesk', monospace;
+}
+
+/* Custom Shadows */
+.shadow-subtle {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-card-hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-modal {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
+}
+
+.shadow-orange {
+  box-shadow: 0 8px 24px rgba(255, 107, 44, 0.28);
 }
 
 /* Hide scrollbar for carousels */

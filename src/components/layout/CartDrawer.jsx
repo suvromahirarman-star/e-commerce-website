@@ -70,20 +70,19 @@ export function CartDrawer() {
     navigate('/cart');
   };
 
-  if (!isCartOpen) return null;
-
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex justify-end">
-        {/* Backdrop */}
-        <motion.div
-          variants={modalBackdrop}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          onClick={() => setIsCartOpen(false)}
-          className="fixed inset-0 bg-neutral-950/60 backdrop-blur-xs"
-        />
+      {isCartOpen && (
+        <div className="fixed inset-0 z-50 flex justify-end">
+          {/* Backdrop */}
+          <motion.div
+            variants={modalBackdrop}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            onClick={() => setIsCartOpen(false)}
+            className="fixed inset-0 bg-neutral-950/60 backdrop-blur-xs"
+          />
 
         {/* Drawer Window */}
         <motion.div
@@ -351,6 +350,7 @@ export function CartDrawer() {
           )}
         </motion.div>
       </div>
+      )}
     </AnimatePresence>
   );
 }

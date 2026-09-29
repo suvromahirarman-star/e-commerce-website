@@ -22,11 +22,10 @@ export function MobileNavDrawer({ isOpen, onClose, onOpenSearch }) {
   const { wishlistCount } = useWishlist();
   const { itemCount, setIsCartOpen } = useCart();
 
-  if (!isOpen) return null;
-
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex lg:hidden">
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex lg:hidden">
         {/* Backdrop */}
         <motion.div
           variants={modalBackdrop}
@@ -209,6 +208,7 @@ export function MobileNavDrawer({ isOpen, onClose, onOpenSearch }) {
           </div>
         </motion.div>
       </div>
+      )}
     </AnimatePresence>
   );
 }

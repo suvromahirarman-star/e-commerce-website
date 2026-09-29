@@ -96,11 +96,10 @@ export function SearchModal({ isOpen, onClose }) {
     navigate(`/search?q=${encodeURIComponent(query.trim())}`);
   };
 
-  if (!isOpen) return null;
-
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 overflow-y-auto">
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 overflow-y-auto">
         {/* Backdrop */}
         <motion.div
           variants={modalBackdrop}
@@ -276,6 +275,7 @@ export function SearchModal({ isOpen, onClose }) {
           </div>
         </motion.div>
       </div>
+      )}
     </AnimatePresence>
   );
 }

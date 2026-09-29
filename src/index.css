@@ -1,15 +1,31 @@
 @import "tailwindcss";
 
+@theme {
+  --color-terracotta-50: #fdf5f2;
+  --color-terracotta-100: #faeae3;
+  --color-terracotta-200: #f5d6c8;
+  --color-terracotta-300: #eeb8a3;
+  --color-terracotta-400: #e49174;
+  --color-terracotta-500: #d66c48;
+  --color-terracotta-600: #c45b32;
+  --color-terracotta-700: #a44826;
+  --color-terracotta-800: #853c23;
+  --color-terracotta-900: #6e3522;
+  --color-terracotta-950: #3b190f;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
   }
   body {
     background-color: #faf9f6;
     color: #121214;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
   }
   #root {
     min-height: 100vh;

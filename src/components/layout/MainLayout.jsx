@@ -24,7 +24,7 @@ export function MainLayout() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF9F6] text-neutral-900 selection:bg-neutral-900 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white text-neutral-950 font-sans selection:bg-[#FF6B2C] selection:text-white">
       {/* 1. Announcement Bar */}
       <AnnouncementBar />
 

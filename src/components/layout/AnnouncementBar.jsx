@@ -7,22 +7,22 @@ const ANNOUNCEMENTS = [
   {
     id: 1,
     icon: Truck,
-    text: 'Complimentary white-glove express delivery on orders over ৳3,000 across Bangladesh',
+    text: 'FREE EXPRESS SHIPPING ON ORDERS OVER ৳3,000 ACROSS BANGLADESH',
     ctaText: 'Shop Catalog',
     ctaLink: '/shop',
   },
   {
     id: 2,
     icon: Sparkles,
-    text: 'Autumn / Winter 2026 Collection — Handcrafted limited atelier releases now live',
-    ctaText: 'Discover New Arrivals',
+    text: 'NEW ARRIVALS 2026 — DISCOVER THE SEASON EDIT WITH ORIGINAL SILHOUETTES',
+    ctaText: 'Explore Now',
     ctaLink: '/shop?filter=new',
   },
   {
     id: 3,
     icon: Tag,
-    text: 'Use code AURA10 at guest checkout for 10% off your entire seasonal order',
-    ctaText: 'Copy Code',
+    text: 'USE CODE AURA10 AT GUEST CHECKOUT FOR 10% OFF YOUR INAUGURAL ORDER',
+    ctaText: 'Copy Voucher',
     ctaLink: '/shop',
   },
 ];
@@ -63,31 +63,31 @@ export function AnnouncementBar() {
   return (
     <aside
       aria-label="Store Announcement"
-      className="relative z-40 bg-neutral-950 text-neutral-100 border-b border-neutral-800 text-xs py-2 px-4 transition-all"
+      className="relative z-40 bg-[#FF6B2C] text-white text-[11px] sm:text-xs py-2 px-3 sm:px-4 shadow-xs"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Left Spacer for symmetry */}
-        <div className="hidden sm:block w-8" />
+        {/* Left Spacer for symmetrical optical alignment */}
+        <div className="hidden sm:block w-7" />
 
-        {/* Animated Announcement Content */}
+        {/* Animated Announcement Carousel */}
         <div className="flex-1 overflow-hidden h-5 relative flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={current.id}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="flex items-center gap-2 font-medium tracking-wide text-center"
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="flex items-center gap-2 font-medium tracking-wider uppercase text-center"
             >
-              <Icon className="w-3.5 h-3.5 text-[#C45B32] flex-shrink-0" />
-              <span className="truncate max-w-[280px] sm:max-w-none text-neutral-200">
+              <Icon className="w-3.5 h-3.5 text-white flex-shrink-0" />
+              <span className="truncate max-w-[260px] sm:max-w-none text-white font-medium">
                 {current.text}
               </span>
               {current.ctaLink && (
                 <Link
                   to={current.ctaLink}
-                  className="hidden md:inline-flex items-center gap-1 text-[#D97746] hover:text-[#E8956A] underline font-semibold ml-1 cursor-pointer transition-colors"
+                  className="hidden md:inline-flex items-center gap-1 text-white hover:text-white/90 underline font-semibold ml-1 cursor-pointer transition-colors"
                 >
                   <span>{current.ctaText}</span>
                   <ArrowRight className="w-3 h-3" />
@@ -101,7 +101,7 @@ export function AnnouncementBar() {
         <button
           type="button"
           onClick={handleDismiss}
-          className="text-neutral-400 hover:text-white p-1 rounded transition-colors cursor-pointer"
+          className="text-white/80 hover:text-white p-1 rounded-md transition-colors cursor-pointer"
           aria-label="Dismiss announcement"
           title="Dismiss"
         >

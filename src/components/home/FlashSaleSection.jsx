@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, Clock, ArrowRight, ShieldCheck, Flame } from 'lucide-react';
+import { Clock, ArrowRight, Flame } from 'lucide-react';
 import { ProductCard } from '../product/ProductCard';
 
 export function FlashSaleSection({ flashProducts, onQuickView }) {
@@ -42,48 +42,56 @@ export function FlashSaleSection({ flashProducts, onQuickView }) {
     : [];
 
   return (
-    <section className="py-16 sm:py-24 bg-neutral-950 text-white relative overflow-hidden">
-      {/* Decorative ambient glow */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C45B32]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+    <section className="py-16 sm:py-24 bg-[#FFF8F3] border-b border-[#EAEAEA] relative overflow-hidden">
+      {/* Decorative Warm Ambient Glow */}
+      <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-[#FFF1E8] rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
-        {/* Flash Sale Header & Countdown Container */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-4 border-b border-neutral-800">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+        {/* Flash Sale Header & Animated Countdown Container */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-6 border-b border-[#EAEAEA]">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-mono font-medium tracking-wide">
-              <Flame className="w-3.5 h-3.5 text-rose-500" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF1E8] border border-[#FF6B2C]/30 text-[#FF6B2C] text-xs font-mono font-bold tracking-wider uppercase">
+              <Flame className="w-3.5 h-3.5 text-[#FF6B2C]" />
               <span>Limited Atelier Window</span>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl font-bold font-editorial tracking-tight">
-              Seasonal Flash Event
+            <h2 className="text-3xl sm:text-5xl font-bold font-display text-neutral-950 tracking-tight">
+              Seasonal <span className="text-[#FF6B2C]">Flash Event</span>
             </h2>
 
-            <p className="text-sm text-neutral-400 max-w-lg">
-              Exceptional archive pieces discounted up to 35%. Once allocated vault quantities deplete, garments revert to catalog pricing.
+            <p className="text-sm text-[#666666] max-w-lg font-sans">
+              Archive silhouettes discounted up to 35%. Once allocated vault quantities deplete, garments revert to full catalog pricing.
             </p>
           </div>
 
-          {/* Countdown Blocks */}
+          {/* Clean White & Orange Countdown Blocks */}
           <div className="flex items-center gap-2 sm:gap-3 font-mono">
             {[
               { label: 'Days', value: formatDigit(timeLeft.days) },
               { label: 'Hours', value: formatDigit(timeLeft.hours) },
-              { label: 'Mins', value: formatDigit(timeLeft.minutes) },
-              { label: 'Secs', value: formatDigit(timeLeft.seconds) },
+              { label: 'Minutes', value: formatDigit(timeLeft.minutes) },
+              { label: 'Seconds', value: formatDigit(timeLeft.seconds) },
             ].map((item, idx) => (
               <div key={idx} className="flex items-center gap-2 sm:gap-3">
-                <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-3 sm:p-4 text-center min-w-16 sm:min-w-20 shadow-inner">
-                  <span className="block text-2xl sm:text-3xl font-bold text-white font-mono tracking-tight">
-                    {item.value}
-                  </span>
-                  <span className="block text-[10px] uppercase tracking-wider text-neutral-400 mt-0.5">
+                <div className="bg-white border border-[#EAEAEA] rounded-2xl p-3 sm:p-4 text-center min-w-16 sm:min-w-20 shadow-[0_4px_14px_rgba(0,0,0,0.04)]">
+                  <AnimatePresence mode="popLayout">
+                    <motion.span
+                      key={item.value}
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 4 }}
+                      transition={{ duration: 0.2 }}
+                      className="block text-2xl sm:text-3xl font-extrabold text-[#FF6B2C] font-mono tracking-tight"
+                    >
+                      {item.value}
+                    </motion.span>
+                  </AnimatePresence>
+                  <span className="block text-[10px] uppercase tracking-wider text-[#999999] font-medium mt-0.5">
                     {item.label}
                   </span>
                 </div>
                 {idx < 3 && (
-                  <span className="text-xl font-bold text-neutral-600">:</span>
+                  <span className="text-xl font-bold text-[#FF6B2C]">:</span>
                 )}
               </div>
             ))}
@@ -100,18 +108,18 @@ export function FlashSaleSection({ flashProducts, onQuickView }) {
         </div>
 
         {/* Banner Footer CTA */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 text-xs font-mono text-neutral-400">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 text-xs font-mono text-[#666666] border-t border-[#EAEAEA]">
           <div className="flex items-center gap-2">
-            <Clock className="w-4 h-4 text-[#C45B32]" />
+            <Clock className="w-4 h-4 text-[#FF6B2C]" />
             <span>Guaranteed dispatch within 24 hours on all Flash Sale orders</span>
           </div>
 
           <Link
             to="/shop?filter=flash"
-            className="inline-flex items-center gap-1.5 text-white hover:text-[#E8956A] font-semibold transition-colors group cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-neutral-950 hover:text-[#FF6B2C] font-semibold transition-colors group cursor-pointer"
           >
             <span>View All Flash Offers</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#FF6B2C] group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>

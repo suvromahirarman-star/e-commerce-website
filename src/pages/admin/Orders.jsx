@@ -63,10 +63,10 @@ export function Orders() {
 
   const filteredOrders = orders.filter((o) => {
     const matchesSearch =
-      o.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      o.customer?.fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      o.customer?.phone?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      o.customer?.email?.toLowerCase().includes(searchQuery.toLowerCase());
+      (o.id && o.id.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (o.customer?.fullName && o.customer.fullName.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (o.customer?.phone && o.customer.phone.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (o.customer?.email && o.customer.email.toLowerCase().includes(searchQuery.toLowerCase()));
 
     const matchesStatus =
       statusFilter === 'all' || o.orderStatus?.toLowerCase() === statusFilter.toLowerCase();

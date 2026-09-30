@@ -75,6 +75,32 @@ export const adminService = {
       if (o.customer?.email) customersMap.set(o.customer.email, true);
     });
 
+    // Count fulfillment pipeline breakdown
+    const statusCounts = {
+      Delivered: 0,
+      Shipped: 0,
+      Processing: 0,
+      Pending: 0,
+    };
+    orders.forEach((o) => {
+      const st = o.orderStatus || 'Pending';
+      if (statusCounts[st] !== undefined) {
+        statusCounts[st] += 1;
+      } else {
+        statusCounts[st] = 1;
+      }
+    });
+    const orderStatusBreakdown = Object.entries(statusCounts).map(([status, count]) => ({
+      status,
+      count,
+    }));
+
+    const salesTrend = (mockAdminStats.salesTrend7Days || []).map((d) => ({
+      day: d.day,
+      amount: d.revenue ?? d.amount ?? 0,
+      orders: d.orders ?? 0,
+    }));
+
     return {
       kpis: {
         totalRevenue,
@@ -82,8 +108,10 @@ export const adminService = {
         totalProducts: products.length,
         totalCustomers: customersMap.size,
       },
+      salesTrend,
       salesTrend7Days: mockAdminStats.salesTrend7Days,
       categoryBreakdown: mockAdminStats.categoryBreakdown,
+      orderStatusBreakdown,
       recentOrders: orders.slice(0, 5),
       lowStockProducts: products.filter((p) => (p.stock || 0) <= 10).slice(0, 5),
     };
@@ -105,6 +133,13 @@ export const adminService = {
       status: p.stock === 0 ? 'Out of Stock' : p.stock <= 10 ? 'Low Stock' : 'In Stock',
       image: p.images?.[0] || '',
     }));
+  },
+
+  /**
+   * Alias for getCustomersFromOrders for admin directory
+   */
+  async getGuestCustomers() {
+    return this.getCustomersFromOrders();
   },
 
   /**

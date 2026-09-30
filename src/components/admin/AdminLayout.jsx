@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import {
   LayoutDashboard,
   Package,
@@ -41,8 +41,7 @@ export function AdminLayout() {
 
   // If not logged in, redirect to login page
   if (!isAuthenticated) {
-    navigate('/admin/login', { replace: true });
-    return null;
+    return <Navigate to="/admin/login" replace />;
   }
 
   const handleLogout = () => {

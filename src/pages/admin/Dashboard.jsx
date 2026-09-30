@@ -52,7 +52,20 @@ export function Dashboard() {
     );
   }
 
-  const { kpis, salesTrend, recentOrders, lowStockProducts, orderStatusBreakdown } = stats;
+  const {
+    kpis = { totalRevenue: 0, totalOrders: 0, totalProducts: 0, totalCustomers: 0 },
+    salesTrend = [],
+    salesTrend7Days = [],
+    recentOrders = [],
+    lowStockProducts = [],
+    orderStatusBreakdown = [],
+  } = stats || {};
+
+  const activeSalesTrend = (salesTrend && salesTrend.length > 0 ? salesTrend : salesTrend7Days || []).map((day) => ({
+    day: day.day,
+    amount: day.amount ?? day.revenue ?? 0,
+    orders: day.orders ?? 0,
+  }));
 
   return (
     <div className="space-y-8">
@@ -205,7 +218,7 @@ export function Dashboard() {
 
           {/* SVG Custom Revenue Bars */}
           <div className="h-64 flex items-end justify-between gap-3 pt-8 pb-4 border-b border-neutral-100">
-            {salesTrend.map((day, idx) => {
+            {activeSalesTrend.map((day, idx) => {
               const heightPercent = Math.min(100, Math.max(15, Math.round((day.amount / 60000) * 100)));
               return (
                 <div key={idx} className="flex-1 flex flex-col items-center gap-2 group relative">
@@ -220,7 +233,7 @@ export function Dashboard() {
                       initial={{ height: 0 }}
                       animate={{ height: `${heightPercent}%` }}
                       transition={{ duration: 0.5, delay: idx * 0.05 }}
-                      className="w-full bg-neutral-900 group-hover:bg-[#C45B32] transition-colors rounded-t-xl"
+                      className="w-full bg-neutral-900 group-hover:bg-[#FF6B2C] transition-colors rounded-t-xl"
                     />
                   </div>
 
@@ -254,7 +267,7 @@ export function Dashboard() {
                   <div
                     className="h-full rounded-full transition-all duration-500"
                     style={{
-                      width: `${Math.round((status.count / kpis.totalOrders) * 100)}%`,
+                      width: `${Math.round((status.count / (kpis.totalOrders || 1)) * 100)}%`,
                       backgroundColor:
                         status.status === 'Delivered'
                           ? '#059669'
@@ -262,7 +275,7 @@ export function Dashboard() {
                           ? '#2563EB'
                           : status.status === 'Processing'
                           ? '#D97706'
-                          : '#C45B32',
+                          : '#FF6B2C',
                     }}
                   />
                 </div>
@@ -292,7 +305,7 @@ export function Dashboard() {
             </div>
             <Link
               to="/admin/orders"
-              className="text-xs font-mono font-semibold text-[#C45B32] hover:underline"
+              className="text-xs font-mono font-semibold text-[#FF6B2C] hover:underline"
             >
               View All Pipeline →
             </Link>
@@ -314,9 +327,9 @@ export function Dashboard() {
                   <tr key={order.id} className="hover:bg-neutral-50/60">
                     <td className="p-3 font-bold text-neutral-950">{order.id}</td>
                     <td className="p-3 font-sans font-medium text-neutral-800">
-                      {order.customer.fullName}
+                      {order.customer?.fullName || order.customer?.name || 'Guest Patron'}
                     </td>
-                    <td className="p-3 text-neutral-600">{order.paymentMethod}</td>
+                    <td className="p-3 text-neutral-600">{order.paymentMethod || 'COD'}</td>
                     <td className="p-3">
                       <span
                         className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
@@ -331,7 +344,7 @@ export function Dashboard() {
                       </span>
                     </td>
                     <td className="p-3 text-right font-bold text-neutral-950">
-                      {formatPrice(order.total || 8900)}
+                      {formatPrice(order.total || 0)}
                     </td>
                   </tr>
                 ))}

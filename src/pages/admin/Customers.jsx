@@ -27,10 +27,10 @@ export function Customers() {
 
   const filteredCustomers = customers.filter(
     (c) =>
-      c.fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      c.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      c.phone.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      c.city?.toLowerCase().includes(searchQuery.toLowerCase())
+      (c.fullName && c.fullName.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (c.email && c.email.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (c.phone && c.phone.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (c.city && c.city.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
   return (

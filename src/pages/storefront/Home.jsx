@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HeroSection } from '../../components/home/HeroSection';
 import { FeaturedCategories } from '../../components/home/FeaturedCategories';
+import { NewArrivalsCarousel } from '../../components/home/NewArrivalsCarousel';
 import { BestsellersSection } from '../../components/home/BestsellersSection';
 import { FlashSaleSection } from '../../components/home/FlashSaleSection';
 import { CampaignBanner } from '../../components/home/CampaignBanner';
@@ -54,7 +55,10 @@ export function Home() {
       {/* 2. Curated Department Categories */}
       <FeaturedCategories />
 
-      {/* 3. Bestsellers with Category Tabs */}
+      {/* 3. Fresh New Arrivals Carousel */}
+      <NewArrivalsCarousel products={products} onQuickView={handleOpenQuickView} />
+
+      {/* 4. Bestsellers with Category Tabs */}
       <BestsellersSection products={products} onQuickView={handleOpenQuickView} />
 
       {/* 4. Live Ticking Flash Sale Event */}

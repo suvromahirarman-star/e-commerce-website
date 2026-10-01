@@ -82,7 +82,7 @@ export function Orders() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-editorial text-neutral-950">
+          <h1 className="text-2xl sm:text-3xl font-bold font-display text-neutral-950">
             Order Fulfillment Pipeline
           </h1>
           <p className="text-xs text-neutral-500 font-mono">
@@ -263,10 +263,10 @@ export function Orders() {
             {/* Header */}
             <div className="flex items-center justify-between pb-4 border-b border-neutral-100">
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#C45B32] font-semibold">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#FF6B2C] font-semibold">
                   Order Dossier
                 </span>
-                <h3 className="text-xl font-bold font-editorial text-neutral-950">
+                <h3 className="text-xl font-bold font-display text-neutral-950">
                   {selectedOrder.id}
                 </h3>
               </div>
@@ -280,7 +280,7 @@ export function Orders() {
             </div>
 
             {/* Status Change Selector inside Modal */}
-            <div className="p-4 rounded-2xl bg-[#FAF9F6] border border-neutral-200/80 flex items-center justify-between gap-4">
+            <div className="p-4 rounded-2xl bg-[#FAFAFA] border border-neutral-200/80 flex items-center justify-between gap-4">
               <span className="text-xs font-mono font-semibold text-neutral-700">
                 Pipeline Status:
               </span>

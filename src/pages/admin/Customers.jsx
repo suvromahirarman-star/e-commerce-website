@@ -37,7 +37,7 @@ export function Customers() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold font-editorial text-neutral-950">
+        <h1 className="text-2xl sm:text-3xl font-bold font-display text-neutral-950">
           Guest Patrons Directory
         </h1>
         <p className="text-xs text-neutral-500 font-mono">
@@ -150,7 +150,7 @@ export function Customers() {
         <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-neutral-950/70 backdrop-blur-xs">
           <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-neutral-200">
             <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
-              <h3 className="text-lg font-bold font-editorial text-neutral-950">
+              <h3 className="text-lg font-bold font-display text-neutral-950">
                 Patron Dossier
               </h3>
               <button
@@ -163,20 +163,20 @@ export function Customers() {
             </div>
 
             <div className="space-y-3 text-xs font-mono">
-              <div className="p-4 rounded-2xl bg-[#FAF9F6] border border-neutral-200/80 space-y-2">
-                <div className="font-bold text-base font-editorial text-neutral-950">
+              <div className="p-4 rounded-2xl bg-[#FAFAFA] border border-neutral-200/80 space-y-2">
+                <div className="font-bold text-base font-display text-neutral-950">
                   {selectedCustomer.fullName}
                 </div>
                 <div className="flex items-center gap-2 text-neutral-600">
-                  <Mail className="w-3.5 h-3.5 text-[#C45B32]" />
+                  <Mail className="w-3.5 h-3.5 text-[#FF6B2C]" />
                   <span>{selectedCustomer.email}</span>
                 </div>
                 <div className="flex items-center gap-2 text-neutral-600">
-                  <Phone className="w-3.5 h-3.5 text-[#C45B32]" />
+                  <Phone className="w-3.5 h-3.5 text-[#FF6B2C]" />
                   <span>{selectedCustomer.phone}</span>
                 </div>
                 <div className="flex items-center gap-2 text-neutral-600">
-                  <MapPin className="w-3.5 h-3.5 text-[#C45B32]" />
+                  <MapPin className="w-3.5 h-3.5 text-[#FF6B2C]" />
                   <span>
                     {selectedCustomer.city}, {selectedCustomer.division}
                   </span>

@@ -66,7 +66,7 @@ export function ProductForm() {
 
   const [newImageUrl, setNewImageUrl] = useState('');
   const [newColorName, setNewColorName] = useState('');
-  const [newColorHex, setNewColorHex] = useState('#C45B32');
+  const [newColorHex, setNewColorHex] = useState('#FF6B2C');
 
   useEffect(() => {
     if (isEditing) {
@@ -220,7 +220,7 @@ export function ProductForm() {
             <ArrowLeft className="w-4 h-4" />
           </Link>
           <div>
-            <h1 className="text-2xl font-bold font-editorial text-neutral-950">
+            <h1 className="text-2xl font-bold font-display text-neutral-950">
               {isEditing ? `Edit: ${formData.name}` : 'Create New Atelier Product'}
             </h1>
             <p className="text-xs text-neutral-500 font-mono">
@@ -233,7 +233,7 @@ export function ProductForm() {
           type="button"
           onClick={handleSubmit}
           disabled={isSubmitting}
-          className="px-6 py-2.5 rounded-xl bg-neutral-950 hover:bg-[#C45B32] disabled:opacity-50 text-white text-xs font-mono font-semibold transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
+          className="px-6 py-2.5 rounded-xl bg-neutral-950 hover:bg-[#FF6B2C] disabled:opacity-50 text-white text-xs font-mono font-semibold transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
         >
           {isSubmitting ? (
             <span>Saving Archive...</span>
@@ -251,7 +251,7 @@ export function ProductForm() {
         <div className="bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
             <div>
-              <h2 className="text-base font-bold font-editorial text-neutral-950">
+              <h2 className="text-base font-bold font-display text-neutral-950">
                 Visual Photography Gallery
               </h2>
               <p className="text-xs text-neutral-500">
@@ -329,7 +329,7 @@ export function ProductForm() {
                 key={i}
                 type="button"
                 onClick={() => setFormData((prev) => ({ ...prev, images: [...prev.images, preset] }))}
-                className="text-neutral-700 hover:text-[#C45B32] underline"
+                className="text-neutral-700 hover:text-[#FF6B2C] underline"
               >
                 Sample 0{i + 1}
               </button>
@@ -339,7 +339,7 @@ export function ProductForm() {
 
         {/* Section 2: Core Details & Department */}
         <div className="bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-4">
-          <h2 className="text-base font-bold font-editorial text-neutral-950 pb-3 border-b border-neutral-100">
+          <h2 className="text-base font-bold font-display text-neutral-950 pb-3 border-b border-neutral-100">
             General Information
           </h2>
 
@@ -393,7 +393,7 @@ export function ProductForm() {
 
         {/* Section 3: Pricing, Inventory & Badges */}
         <div className="bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-4">
-          <h2 className="text-base font-bold font-editorial text-neutral-950 pb-3 border-b border-neutral-100">
+          <h2 className="text-base font-bold font-display text-neutral-950 pb-3 border-b border-neutral-100">
             Commercial Pricing &amp; Stock
           </h2>
 
@@ -474,7 +474,7 @@ export function ProductForm() {
 
         {/* Section 4: Variants (Colors & Sizes) */}
         <div className="bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-4">
-          <h2 className="text-base font-bold font-editorial text-neutral-950 pb-3 border-b border-neutral-100">
+          <h2 className="text-base font-bold font-display text-neutral-950 pb-3 border-b border-neutral-100">
             Garment Variants (Colors &amp; Sizes)
           </h2>
 
@@ -559,7 +559,7 @@ export function ProductForm() {
 
         {/* Section 5: Descriptions & Specifications */}
         <div className="bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-4">
-          <h2 className="text-base font-bold font-editorial text-neutral-950 pb-3 border-b border-neutral-100">
+          <h2 className="text-base font-bold font-display text-neutral-950 pb-3 border-b border-neutral-100">
             Copywriting &amp; Atelier Specifications
           </h2>
 

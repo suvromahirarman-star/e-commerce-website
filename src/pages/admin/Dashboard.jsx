@@ -72,11 +72,11 @@ export function Dashboard() {
       {/* Dashboard Top Greeting & Status */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-[#C45B32] font-semibold">
+          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-[#FF6B2C] font-semibold">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Operational Center</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-editorial text-neutral-950">
+          <h1 className="text-2xl sm:text-3xl font-bold font-display text-neutral-950">
             Performance Overview
           </h1>
         </div>
@@ -84,7 +84,7 @@ export function Dashboard() {
         <div className="flex items-center gap-2">
           <Link
             to="/admin/products/new"
-            className="px-4 py-2.5 rounded-xl bg-neutral-950 hover:bg-[#C45B32] text-white text-xs font-mono font-semibold transition-colors flex items-center gap-1.5 shadow-sm"
+            className="px-4 py-2.5 rounded-xl bg-neutral-950 hover:bg-[#FF6B2C] text-white text-xs font-mono font-semibold transition-colors flex items-center gap-1.5 shadow-sm"
           >
             <span>+ Add New Product</span>
           </Link>
@@ -182,7 +182,7 @@ export function Dashboard() {
         <div className="lg:col-span-8 bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h2 className="text-lg font-bold font-editorial text-neutral-950">
+              <h2 className="text-lg font-bold font-display text-neutral-950">
                 Revenue Trajectory
               </h2>
               <p className="text-xs text-neutral-500 font-mono">
@@ -252,7 +252,7 @@ export function Dashboard() {
 
         {/* Order Status Volume (4 cols) */}
         <div className="lg:col-span-4 bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-6">
-          <h2 className="text-lg font-bold font-editorial text-neutral-950">
+          <h2 className="text-lg font-bold font-display text-neutral-950">
             Fulfillment Pipeline
           </h2>
 
@@ -283,7 +283,7 @@ export function Dashboard() {
             ))}
           </div>
 
-          <div className="p-4 rounded-2xl bg-[#FAF9F6] border border-neutral-200/70 text-xs font-mono space-y-1">
+          <div className="p-4 rounded-2xl bg-[#FAFAFA] border border-neutral-200/70 text-xs font-mono space-y-1">
             <span className="font-bold text-neutral-950 block">Courier Performance</span>
             <p className="text-neutral-500 text-[11px]">
               98.2% on-time delivery across Dhaka and divisional hubs in the last 30 days.
@@ -298,7 +298,7 @@ export function Dashboard() {
         <div className="lg:col-span-8 bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-6">
           <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
             <div>
-              <h2 className="text-lg font-bold font-editorial text-neutral-950">
+              <h2 className="text-lg font-bold font-display text-neutral-950">
                 Recent Guest Orders
               </h2>
               <p className="text-xs text-neutral-500 font-mono">Live customer dispatch queue</p>
@@ -358,13 +358,13 @@ export function Dashboard() {
           <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
             <div className="flex items-center gap-2">
               <AlertTriangle className="w-4 h-4 text-amber-600" />
-              <h2 className="text-base font-bold font-editorial text-neutral-950">
+              <h2 className="text-base font-bold font-display text-neutral-950">
                 Low Stock Atelier
               </h2>
             </div>
             <Link
               to="/admin/inventory"
-              className="text-xs font-mono font-semibold text-[#C45B32] hover:underline"
+              className="text-xs font-mono font-semibold text-[#FF6B2C] hover:underline"
             >
               Inventory →
             </Link>

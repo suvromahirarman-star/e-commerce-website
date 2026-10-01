@@ -62,7 +62,7 @@ export function Settings() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-editorial text-neutral-950">
+          <h1 className="text-2xl sm:text-3xl font-bold font-display text-neutral-950">
             Store &amp; Operational Settings
           </h1>
           <p className="text-xs text-neutral-500 font-mono">
@@ -97,7 +97,7 @@ export function Settings() {
         <div className="bg-white p-6 rounded-3xl border border-neutral-200/80 shadow-xs space-y-5">
           <div className="flex items-center gap-2.5 border-b border-neutral-100 pb-3">
             <Store className="w-4 h-4 text-neutral-900" />
-            <h2 className="text-base font-bold font-editorial text-neutral-950">
+            <h2 className="text-base font-bold font-display text-neutral-950">
               Brand Identity &amp; Concierge Details
             </h2>
           </div>
@@ -178,7 +178,7 @@ export function Settings() {
         <div className="bg-white p-6 rounded-3xl border border-neutral-200/80 shadow-xs space-y-5">
           <div className="flex items-center gap-2.5 border-b border-neutral-100 pb-3">
             <Truck className="w-4 h-4 text-neutral-900" />
-            <h2 className="text-base font-bold font-editorial text-neutral-950">
+            <h2 className="text-base font-bold font-display text-neutral-950">
               Logistics &amp; Delivery Rates (BDT ৳)
             </h2>
           </div>
@@ -238,7 +238,7 @@ export function Settings() {
         <div className="bg-white p-6 rounded-3xl border border-neutral-200/80 shadow-xs space-y-5">
           <div className="flex items-center gap-2.5 border-b border-neutral-100 pb-3">
             <CreditCard className="w-4 h-4 text-neutral-900" />
-            <h2 className="text-base font-bold font-editorial text-neutral-950">
+            <h2 className="text-base font-bold font-display text-neutral-950">
               Payment Gateways &amp; Guest Protocol
             </h2>
           </div>
@@ -305,7 +305,7 @@ export function Settings() {
         <div className="bg-white p-6 rounded-3xl border border-neutral-200/80 shadow-xs space-y-4">
           <div className="flex items-center gap-2.5 border-b border-neutral-100 pb-3">
             <Shield className="w-4 h-4 text-neutral-900" />
-            <h2 className="text-base font-bold font-editorial text-neutral-950">
+            <h2 className="text-base font-bold font-display text-neutral-950">
               Maintenance &amp; Atelier System Controls
             </h2>
           </div>

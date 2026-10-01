@@ -81,7 +81,7 @@ export function ContentCMS() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-editorial text-neutral-950">
+          <h1 className="text-2xl sm:text-3xl font-bold font-display text-neutral-950">
             Storefront CMS &amp; Content
           </h1>
           <p className="text-xs text-neutral-500 font-mono">
@@ -154,7 +154,7 @@ export function ContentCMS() {
       {activeTab === 'hero' && (
         <div className="space-y-6">
           <div className="bg-white p-6 rounded-3xl border border-neutral-200/80 shadow-xs space-y-5">
-            <h2 className="text-base font-bold font-editorial text-neutral-950">
+            <h2 className="text-base font-bold font-display text-neutral-950">
               Hero Header &amp; Visuals
             </h2>
 
@@ -204,7 +204,7 @@ export function ContentCMS() {
                 value={content.hero.headline || ''}
                 onChange={(e) => handleHeroChange('headline', e.target.value)}
                 placeholder="Designed with Intention. Crafted to Endure."
-                className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-200 text-sm font-editorial focus:outline-none focus:ring-2 focus:ring-neutral-950 font-bold"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-200 text-sm font-display focus:outline-none focus:ring-2 focus:ring-neutral-950 font-bold"
               />
             </div>
 
@@ -270,7 +270,7 @@ export function ContentCMS() {
               <span className="inline-block text-[11px] font-mono uppercase tracking-widest text-terracotta-400">
                 {content.hero.badge}
               </span>
-              <h1 className="text-2xl sm:text-3xl font-editorial font-bold leading-tight">
+              <h1 className="text-2xl sm:text-3xl font-display font-bold leading-tight">
                 {content.hero.headline}
               </h1>
               <p className="text-xs text-neutral-400 font-sans leading-relaxed">
@@ -295,7 +295,7 @@ export function ContentCMS() {
           <div className="bg-white p-6 rounded-3xl border border-neutral-200/80 shadow-xs space-y-5">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-base font-bold font-editorial text-neutral-950">
+                <h2 className="text-base font-bold font-display text-neutral-950">
                   Global Storefront Banner Ticker
                 </h2>
                 <p className="text-xs text-neutral-500 font-mono">
@@ -375,7 +375,7 @@ export function ContentCMS() {
       {activeTab === 'banner' && (
         <div className="space-y-6">
           <div className="bg-white p-6 rounded-3xl border border-neutral-200/80 shadow-xs space-y-5">
-            <h2 className="text-base font-bold font-editorial text-neutral-950">
+            <h2 className="text-base font-bold font-display text-neutral-950">
               Middle-Page Editorial Campaign Banner
             </h2>
 
@@ -484,7 +484,7 @@ export function ContentCMS() {
               <span className="text-[11px] font-mono tracking-widest uppercase text-terracotta-400">
                 {content.promotionalBanner.subtitle}
               </span>
-              <h3 className="text-xl font-editorial font-bold">{content.promotionalBanner.title}</h3>
+              <h3 className="text-xl font-display font-bold">{content.promotionalBanner.title}</h3>
               <p className="text-xs text-neutral-300 font-sans leading-relaxed">
                 {content.promotionalBanner.description}
               </p>

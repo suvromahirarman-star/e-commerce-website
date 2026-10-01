@@ -107,7 +107,7 @@ export function Reviews() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold font-editorial text-neutral-950">
+        <h1 className="text-2xl sm:text-3xl font-bold font-display text-neutral-950">
           Reviews &amp; Editorial Moderation
         </h1>
         <p className="text-xs text-neutral-500 font-mono">
@@ -122,7 +122,7 @@ export function Reviews() {
             <span className="text-[11px] font-mono tracking-wider uppercase">Total Reviews</span>
             <MessageSquare className="w-4 h-4 text-neutral-700" />
           </div>
-          <div className="text-2xl font-bold font-editorial text-neutral-950">{totalCount}</div>
+          <div className="text-2xl font-bold font-display text-neutral-950">{totalCount}</div>
           <p className="text-[11px] text-neutral-400 font-mono mt-1">Across all collections</p>
         </div>
 
@@ -131,7 +131,7 @@ export function Reviews() {
             <span className="text-[11px] font-mono tracking-wider uppercase text-neutral-400">Average Rating</span>
             <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
           </div>
-          <div className="text-2xl font-bold font-editorial text-neutral-950">{avgRating} / 5.0</div>
+          <div className="text-2xl font-bold font-display text-neutral-950">{avgRating} / 5.0</div>
           <p className="text-[11px] text-neutral-400 font-mono mt-1">Customer satisfaction index</p>
         </div>
 
@@ -140,7 +140,7 @@ export function Reviews() {
             <span className="text-[11px] font-mono tracking-wider uppercase text-neutral-400">Approved</span>
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
           </div>
-          <div className="text-2xl font-bold font-editorial text-neutral-950">{approvedCount}</div>
+          <div className="text-2xl font-bold font-display text-neutral-950">{approvedCount}</div>
           <p className="text-[11px] text-emerald-600 font-mono mt-1">Published live on storefront</p>
         </div>
 
@@ -149,7 +149,7 @@ export function Reviews() {
             <span className="text-[11px] font-mono tracking-wider uppercase text-neutral-400">Pending Review</span>
             <Clock className="w-4 h-4 text-amber-600" />
           </div>
-          <div className="text-2xl font-bold font-editorial text-neutral-950">{pendingCount}</div>
+          <div className="text-2xl font-bold font-display text-neutral-950">{pendingCount}</div>
           <p className="text-[11px] text-amber-600 font-mono mt-1">Awaiting moderation queue</p>
         </div>
       </div>
@@ -205,7 +205,7 @@ export function Reviews() {
         ) : filteredReviews.length === 0 ? (
           <div className="p-12 text-center">
             <MessageSquare className="w-12 h-12 text-neutral-300 mx-auto mb-3" />
-            <p className="font-editorial text-lg text-neutral-800">No reviews found</p>
+            <p className="font-display text-lg text-neutral-800">No reviews found</p>
             <p className="text-xs text-neutral-400 font-mono mt-1">Try adjusting your filters or search query.</p>
           </div>
         ) : (
@@ -364,7 +364,7 @@ export function Reviews() {
                 className="w-12 h-12 rounded-full object-cover border border-neutral-200"
               />
               <div>
-                <div className="text-base font-bold font-editorial text-neutral-950">
+                <div className="text-base font-bold font-display text-neutral-950">
                   {selectedReview.author}
                 </div>
                 <div className="text-neutral-400 text-[11px]">

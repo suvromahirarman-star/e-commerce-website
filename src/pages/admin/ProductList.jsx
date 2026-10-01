@@ -78,7 +78,7 @@ export function ProductList() {
       {/* Header & Add Button */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-editorial text-neutral-950">
+          <h1 className="text-2xl sm:text-3xl font-bold font-display text-neutral-950">
             Products Atelier Management
           </h1>
           <p className="text-xs text-neutral-500 font-mono">
@@ -88,7 +88,7 @@ export function ProductList() {
 
         <Link
           to="/admin/products/new"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-950 hover:bg-[#C45B32] text-white text-xs font-mono font-semibold transition-colors shadow-sm"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-950 hover:bg-[#FF6B2C] text-white text-xs font-mono font-semibold transition-colors shadow-sm"
         >
           <Plus className="w-4 h-4" />
           <span>Add New Product</span>
@@ -186,7 +186,7 @@ export function ProductList() {
                         <div className="min-w-0 max-w-[200px] sm:max-w-xs">
                           <Link
                             to={`/admin/products/${p.id}`}
-                            className="font-bold text-neutral-950 font-sans text-sm hover:text-[#C45B32] transition-colors block truncate"
+                            className="font-bold text-neutral-950 font-sans text-sm hover:text-[#FF6B2C] transition-colors block truncate"
                           >
                             {p.name}
                           </Link>
@@ -290,7 +290,7 @@ export function ProductList() {
               <AlertCircle className="w-6 h-6" />
             </div>
             <div className="text-center space-y-1">
-              <h3 className="text-lg font-bold font-editorial text-neutral-950">
+              <h3 className="text-lg font-bold font-display text-neutral-950">
                 Confirm Removal
               </h3>
               <p className="text-xs text-neutral-500 font-sans leading-relaxed">

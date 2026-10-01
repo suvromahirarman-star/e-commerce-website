@@ -73,7 +73,7 @@ export function Inventory() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold font-editorial text-neutral-950">
+        <h1 className="text-2xl sm:text-3xl font-bold font-display text-neutral-950">
           Stock &amp; Inventory Tracker
         </h1>
         <p className="text-xs text-neutral-500 font-mono">

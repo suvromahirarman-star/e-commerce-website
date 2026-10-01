@@ -85,7 +85,7 @@ export function Coupons() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-editorial text-neutral-950">
+          <h1 className="text-2xl sm:text-3xl font-bold font-display text-neutral-950">
             Voucher &amp; Coupon Engine
           </h1>
           <p className="text-xs text-neutral-500 font-mono">
@@ -96,7 +96,7 @@ export function Coupons() {
         <button
           type="button"
           onClick={() => setIsCreateModalOpen(true)}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-950 hover:bg-[#C45B32] text-white text-xs font-mono font-semibold transition-colors shadow-sm cursor-pointer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-950 hover:bg-[#FF6B2C] text-white text-xs font-mono font-semibold transition-colors shadow-sm cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Create New Voucher</span>
@@ -183,7 +183,7 @@ export function Coupons() {
         <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-neutral-950/70 backdrop-blur-xs">
           <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-neutral-200">
             <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
-              <h3 className="text-lg font-bold font-editorial text-neutral-950">
+              <h3 className="text-lg font-bold font-display text-neutral-950">
                 New Atelier Voucher
               </h3>
               <button
@@ -285,7 +285,7 @@ export function Coupons() {
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2.5 rounded-xl bg-neutral-950 hover:bg-[#C45B32] text-white text-xs font-mono font-semibold transition-colors cursor-pointer shadow-sm"
+                  className="px-6 py-2.5 rounded-xl bg-neutral-950 hover:bg-[#FF6B2C] text-white text-xs font-mono font-semibold transition-colors cursor-pointer shadow-sm"
                 >
                   Activate Voucher
                 </button>

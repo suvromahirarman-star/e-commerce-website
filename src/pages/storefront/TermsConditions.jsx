@@ -4,7 +4,7 @@ import { ChevronRight } from 'lucide-react';
 
 export function TermsConditions() {
   return (
-    <div className="bg-[#FAF9F6] min-h-screen py-8 sm:py-16">
+    <div className="bg-[#FAFAFA] min-h-screen py-8 sm:py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-xs font-mono text-neutral-400">
@@ -18,17 +18,17 @@ export function TermsConditions() {
         {/* Content Box */}
         <div className="bg-white p-8 sm:p-14 rounded-3xl border border-neutral-200/80 shadow-xs space-y-8 text-neutral-800 font-sans">
           <div className="space-y-2 pb-6 border-b border-neutral-100">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#C45B32] font-semibold">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#FF6B2C] font-semibold">
               Atelier Agreement
             </span>
-            <h1 className="text-3xl sm:text-4xl font-bold font-editorial text-neutral-950">
+            <h1 className="text-3xl sm:text-4xl font-bold font-display text-neutral-950">
               Terms &amp; Conditions of Service
             </h1>
             <p className="text-xs font-mono text-neutral-400">Effective Date: Autumn 2026</p>
           </div>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold font-editorial text-neutral-950">
+            <h2 className="text-lg font-bold font-display text-neutral-950">
               1. General Provisions
             </h2>
             <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
@@ -37,7 +37,7 @@ export function TermsConditions() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold font-editorial text-neutral-950">
+            <h2 className="text-lg font-bold font-display text-neutral-950">
               2. Currency &amp; Pricing Accuracy
             </h2>
             <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
@@ -46,7 +46,7 @@ export function TermsConditions() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold font-editorial text-neutral-950">
+            <h2 className="text-lg font-bold font-display text-neutral-950">
               3. Courier Dispatch &amp; Doorstep Inspection
             </h2>
             <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
@@ -55,7 +55,7 @@ export function TermsConditions() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold font-editorial text-neutral-950">
+            <h2 className="text-lg font-bold font-display text-neutral-950">
               4. 14-Day Exchange Guarantee
             </h2>
             <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
@@ -64,7 +64,7 @@ export function TermsConditions() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold font-editorial text-neutral-950">
+            <h2 className="text-lg font-bold font-display text-neutral-950">
               5. Intellectual Property
             </h2>
             <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">

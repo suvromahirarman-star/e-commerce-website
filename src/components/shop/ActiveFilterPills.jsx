@@ -1,5 +1,5 @@
 import React from 'react';
-import { X } from 'lucide-react';
+import { X, Sparkles } from 'lucide-react';
 
 export function ActiveFilterPills({ filters, onRemoveFilter, onClearAll }) {
   const pills = [];
@@ -40,21 +40,21 @@ export function ActiveFilterPills({ filters, onRemoveFilter, onClearAll }) {
   if (pills.length === 0) return null;
 
   return (
-    <div className="flex flex-wrap items-center gap-2 pt-2 pb-4">
-      <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider">
+    <div className="flex flex-wrap items-center gap-2 pt-1 pb-3">
+      <span className="text-[11px] font-mono text-[#999999] uppercase tracking-wider font-semibold">
         Active Filters:
       </span>
 
       {pills.map((pill) => (
         <span
           key={pill.key}
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-neutral-800 text-xs font-mono"
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF1E8] border border-[#FF6B2C]/25 text-[#FF6B2C] text-xs font-mono font-medium shadow-2xs"
         >
           <span>{pill.label}</span>
           <button
             type="button"
             onClick={() => onRemoveFilter(pill.key)}
-            className="text-neutral-400 hover:text-neutral-900 cursor-pointer p-0.5"
+            className="text-[#FF6B2C]/70 hover:text-[#C94716] cursor-pointer p-0.5 rounded-full hover:bg-[#FFE0CE] transition-colors"
             aria-label={`Remove filter ${pill.label}`}
           >
             <X className="w-3 h-3" />
@@ -65,7 +65,7 @@ export function ActiveFilterPills({ filters, onRemoveFilter, onClearAll }) {
       <button
         type="button"
         onClick={onClearAll}
-        className="text-xs font-mono font-semibold text-[#C45B32] hover:underline cursor-pointer ml-1"
+        className="text-xs font-mono font-bold text-[#FF6B2C] hover:text-[#E9571F] hover:underline cursor-pointer ml-1 transition-colors"
       >
         Clear All
       </button>

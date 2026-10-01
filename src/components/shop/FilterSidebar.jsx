@@ -16,7 +16,7 @@ const COLORS = [
 ];
 
 const PRICE_PRESETS = [
-  { label: 'All Prices', min: 0, max: 20000 },
+  { label: 'All Prices', min: 0, max: 50000 },
   { label: 'Under ৳4,000', min: 0, max: 4000 },
   { label: '৳4,000 – ৳7,000', min: 4000, max: 7000 },
   { label: '৳7,000 – ৳10,000', min: 7000, max: 10000 },
@@ -34,12 +34,12 @@ export function FilterSidebar({
   ) || PRICE_PRESETS[0];
 
   return (
-    <aside className="w-full space-y-8 text-neutral-900 select-none">
+    <aside className="w-full space-y-7 text-neutral-900 select-none">
       {/* Sidebar Header */}
-      <div className="flex items-center justify-between pb-4 border-b border-neutral-200">
+      <div className="flex items-center justify-between pb-4 border-b border-[#EAEAEA]">
         <div className="flex items-center gap-2">
-          <Filter className="w-4 h-4 text-[#C45B32]" />
-          <h3 className="font-editorial text-lg font-bold text-neutral-950">
+          <Filter className="w-4 h-4 text-[#FF6B2C]" />
+          <h3 className="font-display text-base font-bold text-neutral-950">
             Refine Catalog
           </h3>
         </div>
@@ -47,7 +47,7 @@ export function FilterSidebar({
         <button
           type="button"
           onClick={onResetFilters}
-          className="text-xs font-mono text-neutral-400 hover:text-[#C45B32] transition-colors flex items-center gap-1 cursor-pointer"
+          className="text-xs font-mono text-[#999999] hover:text-[#FF6B2C] transition-colors flex items-center gap-1 cursor-pointer"
           title="Reset all filters"
         >
           <RotateCcw className="w-3 h-3" />
@@ -57,21 +57,21 @@ export function FilterSidebar({
 
       {/* Category Filter */}
       <div className="space-y-3">
-        <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 font-semibold block">
+        <span className="text-xs font-mono uppercase tracking-wider text-[#999999] font-bold block">
           Departments
         </span>
         <div className="space-y-1">
           <button
             type="button"
             onClick={() => onFilterChange('category', 'all')}
-            className={`w-full text-left px-3 py-2 rounded-xl text-xs font-medium transition-all flex items-center justify-between cursor-pointer ${
+            className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all flex items-center justify-between cursor-pointer ${
               !filters.category || filters.category === 'all'
-                ? 'bg-neutral-950 text-white font-semibold'
-                : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
+                ? 'bg-[#FFF1E8] text-[#FF6B2C] font-bold border border-[#FF6B2C]/25 shadow-2xs'
+                : 'text-[#666666] hover:bg-[#FFF8F3] hover:text-[#FF6B2C]'
             }`}
           >
             <span>All Departments</span>
-            <span className="text-[10px] font-mono opacity-60">Total</span>
+            <span className="text-[10px] font-mono opacity-70">Total</span>
           </button>
 
           {mockCategories.map((cat) => {
@@ -81,14 +81,14 @@ export function FilterSidebar({
                 key={cat.id}
                 type="button"
                 onClick={() => onFilterChange('category', cat.slug)}
-                className={`w-full text-left px-3 py-2 rounded-xl text-xs font-medium transition-all flex items-center justify-between cursor-pointer ${
+                className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all flex items-center justify-between cursor-pointer ${
                   isSelected
-                    ? 'bg-neutral-950 text-white font-semibold'
-                    : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
+                    ? 'bg-[#FFF1E8] text-[#FF6B2C] font-bold border border-[#FF6B2C]/25 shadow-2xs'
+                    : 'text-[#666666] hover:bg-[#FFF8F3] hover:text-[#FF6B2C]'
                 }`}
               >
                 <span>{cat.name}</span>
-                <span className="text-[10px] font-mono opacity-60">
+                <span className="text-[10px] font-mono opacity-70">
                   {cat.itemCount || 12}
                 </span>
               </button>
@@ -97,9 +97,9 @@ export function FilterSidebar({
         </div>
       </div>
 
-      {/* Price Presets */}
-      <div className="space-y-3 pt-4 border-t border-neutral-200">
-        <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 font-semibold block">
+      {/* Price Presets & Range */}
+      <div className="space-y-3 pt-4 border-t border-[#F2F2F2]">
+        <span className="text-xs font-mono uppercase tracking-wider text-[#999999] font-bold block">
           Price Range
         </span>
         <div className="space-y-1.5">
@@ -114,14 +114,14 @@ export function FilterSidebar({
                   onFilterChange('minPrice', preset.min);
                   onFilterChange('maxPrice', preset.max);
                 }}
-                className={`w-full text-left px-3 py-2 rounded-xl text-xs font-mono transition-all flex items-center justify-between cursor-pointer ${
+                className={`w-full text-left px-3.5 py-2 rounded-xl text-xs font-mono transition-all flex items-center justify-between cursor-pointer ${
                   isSelected
-                    ? 'bg-[#FAF0EB] text-[#C45B32] font-bold border border-[#E8C0B2]'
-                    : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 border border-transparent'
+                    ? 'bg-[#FFF1E8] text-[#FF6B2C] font-bold border border-[#FF6B2C]/30 shadow-2xs'
+                    : 'text-[#666666] hover:bg-[#FFF8F3] hover:text-[#FF6B2C] border border-transparent'
                 }`}
               >
                 <span>{preset.label}</span>
-                {isSelected && <Check className="w-3.5 h-3.5 text-[#C45B32]" />}
+                {isSelected && <Check className="w-3.5 h-3.5 text-[#FF6B2C]" />}
               </button>
             );
           })}
@@ -129,16 +129,16 @@ export function FilterSidebar({
       </div>
 
       {/* Sizes */}
-      <div className="space-y-3 pt-4 border-t border-neutral-200">
+      <div className="space-y-3 pt-4 border-t border-[#F2F2F2]">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 font-semibold">
+          <span className="text-xs font-mono uppercase tracking-wider text-[#999999] font-bold">
             Size Variant
           </span>
           {filters.size && (
             <button
               type="button"
               onClick={() => onFilterChange('size', null)}
-              className="text-[10px] font-mono text-[#C45B32] underline cursor-pointer"
+              className="text-[10px] font-mono text-[#FF6B2C] hover:underline cursor-pointer"
             >
               Clear
             </button>
@@ -152,10 +152,10 @@ export function FilterSidebar({
                 key={size}
                 type="button"
                 onClick={() => onFilterChange('size', isSelected ? null : size)}
-                className={`min-w-9 py-1.5 px-2.5 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer border ${
+                className={`min-w-9 py-1.5 px-2.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer border ${
                   isSelected
-                    ? 'bg-neutral-950 text-white border-neutral-950 shadow-xs'
-                    : 'bg-white text-neutral-700 border-neutral-200 hover:border-neutral-400'
+                    ? 'bg-[#FF6B2C] text-white border-[#FF6B2C] shadow-xs'
+                    : 'bg-white text-neutral-800 border-[#EAEAEA] hover:border-[#FF6B2C] hover:text-[#FF6B2C]'
                 }`}
               >
                 {size}
@@ -166,16 +166,16 @@ export function FilterSidebar({
       </div>
 
       {/* Colors */}
-      <div className="space-y-3 pt-4 border-t border-neutral-200">
+      <div className="space-y-3 pt-4 border-t border-[#F2F2F2]">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 font-semibold">
+          <span className="text-xs font-mono uppercase tracking-wider text-[#999999] font-bold">
             Color Palette
           </span>
           {filters.color && (
             <button
               type="button"
               onClick={() => onFilterChange('color', null)}
-              className="text-[10px] font-mono text-[#C45B32] underline cursor-pointer"
+              className="text-[10px] font-mono text-[#FF6B2C] hover:underline cursor-pointer"
             >
               Clear
             </button>
@@ -191,8 +191,8 @@ export function FilterSidebar({
                 onClick={() => onFilterChange('color', isSelected ? null : c.name)}
                 className={`p-2 rounded-xl border text-left flex items-center gap-2 cursor-pointer transition-all ${
                   isSelected
-                    ? 'border-neutral-950 bg-neutral-50 shadow-xs'
-                    : 'border-neutral-200 hover:border-neutral-300 bg-white'
+                    ? 'border-[#FF6B2C] bg-[#FFF8F3] shadow-2xs'
+                    : 'border-[#EAEAEA] hover:border-[#FF6B2C]/40 bg-white'
                 }`}
               >
                 <span
@@ -209,28 +209,28 @@ export function FilterSidebar({
       </div>
 
       {/* Availability & Discount Toggles */}
-      <div className="space-y-3 pt-4 border-t border-neutral-200">
-        <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 font-semibold block">
+      <div className="space-y-3 pt-4 border-t border-[#F2F2F2]">
+        <span className="text-xs font-mono uppercase tracking-wider text-[#999999] font-bold block">
           Stock &amp; Promotion
         </span>
 
-        <label className="flex items-center justify-between p-3 rounded-xl bg-white border border-neutral-200 hover:border-neutral-300 cursor-pointer">
+        <label className="flex items-center justify-between p-3 rounded-xl bg-white border border-[#EAEAEA] hover:border-[#FF6B2C]/40 hover:bg-[#FFF8F3]/30 cursor-pointer transition-colors">
           <span className="text-xs font-medium text-neutral-800">In Stock Pieces Only</span>
           <input
             type="checkbox"
             checked={!!filters.inStockOnly}
             onChange={(e) => onFilterChange('inStockOnly', e.target.checked)}
-            className="w-4 h-4 text-[#C45B32] rounded focus:ring-[#C45B32] cursor-pointer"
+            className="w-4 h-4 accent-[#FF6B2C] rounded cursor-pointer"
           />
         </label>
 
-        <label className="flex items-center justify-between p-3 rounded-xl bg-white border border-neutral-200 hover:border-neutral-300 cursor-pointer">
+        <label className="flex items-center justify-between p-3 rounded-xl bg-white border border-[#EAEAEA] hover:border-[#FF6B2C]/40 hover:bg-[#FFF8F3]/30 cursor-pointer transition-colors">
           <span className="text-xs font-medium text-neutral-800">Discounted Archive Pieces</span>
           <input
             type="checkbox"
             checked={!!filters.discountOnly}
             onChange={(e) => onFilterChange('discountOnly', e.target.checked)}
-            className="w-4 h-4 text-[#C45B32] rounded focus:ring-[#C45B32] cursor-pointer"
+            className="w-4 h-4 accent-[#FF6B2C] rounded cursor-pointer"
           />
         </label>
       </div>

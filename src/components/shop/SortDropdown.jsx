@@ -30,21 +30,21 @@ export function SortDropdown({ value, onChange }) {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-neutral-200 bg-white hover:border-neutral-400 text-neutral-800 text-xs font-mono font-medium transition-colors shadow-2xs cursor-pointer"
+        className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-[#EAEAEA] bg-white hover:border-[#FF6B2C]/40 text-neutral-800 text-xs font-mono font-medium transition-colors shadow-2xs cursor-pointer"
         aria-expanded={isOpen}
       >
-        <ArrowDownUp className="w-3.5 h-3.5 text-neutral-500" />
-        <span className="text-neutral-500">Sort:</span>
+        <ArrowDownUp className="w-3.5 h-3.5 text-[#FF6B2C]" />
+        <span className="text-[#666666]">Sort:</span>
         <span className="font-semibold text-neutral-950">{selectedOption.label}</span>
         <ChevronDown
           className={`w-3.5 h-3.5 text-neutral-400 transition-transform ${
-            isOpen ? 'rotate-180' : ''
+            isOpen ? 'rotate-180 text-[#FF6B2C]' : ''
           }`}
         />
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-52 rounded-2xl bg-white border border-neutral-200/90 shadow-xl py-1.5 z-30">
+        <div className="absolute right-0 mt-2 w-52 rounded-2xl bg-white border border-[#EAEAEA] shadow-[0_12px_36px_rgba(0,0,0,0.08)] py-1.5 z-30 overflow-hidden">
           {SORT_OPTIONS.map((option) => {
             const isSelected = option.id === selectedOption.id;
             return (
@@ -57,12 +57,12 @@ export function SortDropdown({ value, onChange }) {
                 }}
                 className={`w-full text-left px-4 py-2.5 text-xs font-mono flex items-center justify-between transition-colors cursor-pointer ${
                   isSelected
-                    ? 'bg-[#FAF0EB] text-[#C45B32] font-bold'
-                    : 'text-neutral-700 hover:bg-neutral-50 hover:text-neutral-950'
+                    ? 'bg-[#FFF1E8] text-[#FF6B2C] font-bold'
+                    : 'text-neutral-700 hover:bg-[#FFF8F3] hover:text-[#FF6B2C]'
                 }`}
               >
                 <span>{option.label}</span>
-                {isSelected && <Check className="w-3.5 h-3.5 text-[#C45B32]" />}
+                {isSelected && <Check className="w-3.5 h-3.5 text-[#FF6B2C]" />}
               </button>
             );
           })}

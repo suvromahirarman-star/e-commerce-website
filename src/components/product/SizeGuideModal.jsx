@@ -38,11 +38,11 @@ export function SizeGuideModal({ isOpen, onClose }) {
           {/* Header */}
           <div className="flex items-center justify-between pb-4 border-b border-neutral-100">
             <div className="flex items-center gap-2">
-              <div className="p-2 rounded-xl bg-neutral-100 text-neutral-900">
-                <Ruler className="w-5 h-5 text-[#C45B32]" />
+              <div className="p-2 rounded-xl bg-orange-50 text-[#FF6B2C]">
+                <Ruler className="w-5 h-5 text-[#FF6B2C]" />
               </div>
               <div>
-                <h3 className="text-xl font-bold font-editorial text-neutral-950">
+                <h3 className="text-xl font-bold font-display text-neutral-950">
                   Garment Fit &amp; Size Guide
                 </h3>
                 <p className="text-xs text-neutral-500">Universal Atelier Measurements</p>
@@ -68,7 +68,7 @@ export function SizeGuideModal({ isOpen, onClose }) {
                 type="button"
                 onClick={() => setUnit('cm')}
                 className={`px-3 py-1 rounded-lg transition-colors cursor-pointer ${
-                  unit === 'cm' ? 'bg-white text-neutral-950 shadow-xs' : 'text-neutral-500'
+                  unit === 'cm' ? 'bg-white text-[#FF6B2C] font-semibold shadow-xs' : 'text-neutral-500 hover:text-neutral-900'
                 }`}
               >
                 Centimeters
@@ -77,7 +77,7 @@ export function SizeGuideModal({ isOpen, onClose }) {
                 type="button"
                 onClick={() => setUnit('in')}
                 className={`px-3 py-1 rounded-lg transition-colors cursor-pointer ${
-                  unit === 'in' ? 'bg-white text-neutral-950 shadow-xs' : 'text-neutral-500'
+                  unit === 'in' ? 'bg-white text-[#FF6B2C] font-semibold shadow-xs' : 'text-neutral-500 hover:text-neutral-900'
                 }`}
               >
                 Inches
@@ -116,7 +116,7 @@ export function SizeGuideModal({ isOpen, onClose }) {
           </div>
 
           {/* Sizing Advisory */}
-          <div className="mt-6 p-4 rounded-2xl bg-[#FAF9F6] border border-neutral-200/80 text-xs text-neutral-600 space-y-1">
+          <div className="mt-6 p-4 rounded-2xl bg-[#FFF8F3] border border-[#FF6B2C]/20 text-xs text-neutral-600 space-y-1">
             <span className="font-bold text-neutral-950 block">Still unsure of your sizing?</span>
             <p>
               Our tailoring atelier provides complimentary exchanges within 14 days. You can also contact our concierge team at support@aurastudio.com for individual fit recommendations.

@@ -97,16 +97,16 @@ export function FAQ() {
   }).filter((category) => category.items.length > 0);
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen py-8 sm:py-16">
+    <div className="bg-[#FAFAFA] min-h-screen py-8 sm:py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header */}
         <div className="text-center space-y-4 max-w-2xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 text-white text-xs font-mono font-medium">
-            <HelpCircle className="w-3.5 h-3.5 text-[#C45B32]" />
+            <HelpCircle className="w-3.5 h-3.5 text-[#FF6B2C]" />
             <span>Patron Knowledge Base</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-bold font-editorial text-neutral-950 tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold font-display text-neutral-950 tracking-tight">
             Frequently Asked Questions
           </h1>
 
@@ -122,7 +122,7 @@ export function FAQ() {
               placeholder="Search topics (e.g. guest checkout, bKash, return policy)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-white border border-neutral-200/90 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-neutral-950 shadow-xs"
+              className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-white border border-neutral-200/90 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C] shadow-xs"
             />
           </div>
         </div>
@@ -141,7 +141,7 @@ export function FAQ() {
           ) : (
             filteredFaqs.map((category, catIdx) => (
               <div key={catIdx} className="space-y-4">
-                <h2 className="text-sm font-mono uppercase tracking-widest text-[#C45B32] font-semibold">
+                <h2 className="text-sm font-mono uppercase tracking-widest text-[#FF6B2C] font-semibold">
                   {category.category}
                 </h2>
 
@@ -153,7 +153,7 @@ export function FAQ() {
                         <button
                           type="button"
                           onClick={() => toggleItem(catIdx, itemIdx)}
-                          className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-editorial font-bold text-sm sm:text-base text-neutral-900 hover:text-[#C45B32] transition-colors cursor-pointer"
+                          className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-display font-semibold text-sm sm:text-base text-neutral-900 hover:text-[#FF6B2C] transition-colors cursor-pointer"
                         >
                           <span>{item.q}</span>
                           <ChevronDown
@@ -180,14 +180,14 @@ export function FAQ() {
         {/* Still Have Questions Banner */}
         <div className="bg-neutral-950 text-white rounded-3xl p-8 sm:p-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-xl">
           <div className="space-y-1">
-            <h3 className="text-xl font-bold font-editorial">Have a specific inquiry?</h3>
+            <h3 className="text-xl font-bold font-display">Have a specific inquiry?</h3>
             <p className="text-xs text-neutral-400">
               Our Dhaka atelier concierge is available 7 days a week for styling and order assistance.
             </p>
           </div>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-neutral-950 text-xs font-mono font-semibold hover:bg-[#C45B32] hover:text-white transition-colors flex-shrink-0 cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-neutral-950 text-xs font-mono font-semibold hover:bg-[#FF6B2C] hover:text-white transition-colors flex-shrink-0 cursor-pointer shadow-sm hover:shadow-md"
           >
             <span>Contact Concierge</span>
             <ArrowRight className="w-4 h-4" />

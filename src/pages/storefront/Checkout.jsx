@@ -62,10 +62,10 @@ export function Checkout() {
   // Redirect to cart if empty
   if (cart.length === 0) {
     return (
-      <div className="bg-[#FAF9F6] min-h-[70vh] py-16 text-center flex items-center justify-center">
+      <div className="bg-[#FAFAFA] min-h-[70vh] py-16 text-center flex items-center justify-center">
         <div className="bg-white p-10 rounded-3xl border border-neutral-200 max-w-md mx-auto space-y-4 shadow-xs">
           <AlertCircle className="w-10 h-10 text-neutral-400 mx-auto" />
-          <h2 className="text-2xl font-bold font-editorial text-neutral-900">
+          <h2 className="text-2xl font-bold font-display text-neutral-900">
             No Items in Bag
           </h2>
           <p className="text-xs text-neutral-500">
@@ -73,7 +73,7 @@ export function Checkout() {
           </p>
           <Link
             to="/shop"
-            className="inline-block px-6 py-3 rounded-full bg-neutral-950 text-white text-xs font-mono font-semibold"
+            className="inline-block px-6 py-3 rounded-full bg-[#FF6B2C] hover:bg-[#E9571F] text-white text-xs font-mono font-semibold transition-colors"
           >
             Explore Catalog
           </Link>
@@ -179,7 +179,7 @@ export function Checkout() {
   };
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen py-8 sm:py-12">
+    <div className="bg-[#FAFAFA] min-h-screen py-8 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Breadcrumb Navigation */}
         <nav className="flex items-center gap-2 text-xs font-mono text-neutral-400">
@@ -198,10 +198,10 @@ export function Checkout() {
         <div className="bg-neutral-950 text-white rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl border border-neutral-800">
           <div className="space-y-1.5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-[11px] font-mono">
-              <Sparkles className="w-3.5 h-3.5 text-[#C45B32]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#FF6B2C]" />
               <span>Frictionless Protocol</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold font-editorial tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight">
               Express Guest Checkout
             </h1>
             <p className="text-xs sm:text-sm text-neutral-300">
@@ -222,7 +222,7 @@ export function Checkout() {
             {/* 1. Contact Information */}
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
-                <h2 className="text-base font-bold font-editorial text-neutral-950 flex items-center gap-2">
+                <h2 className="text-base font-bold font-display text-neutral-950 flex items-center gap-2">
                   <span className="w-6 h-6 rounded-full bg-neutral-950 text-white text-xs flex items-center justify-center font-mono">
                     1
                   </span>
@@ -306,7 +306,7 @@ export function Checkout() {
             {/* 2. Shipping Address */}
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
-                <h2 className="text-base font-bold font-editorial text-neutral-950 flex items-center gap-2">
+                <h2 className="text-base font-bold font-display text-neutral-950 flex items-center gap-2">
                   <span className="w-6 h-6 rounded-full bg-neutral-950 text-white text-xs flex items-center justify-center font-mono">
                     2
                   </span>
@@ -418,7 +418,7 @@ export function Checkout() {
             {/* 3. Payment Method Selection */}
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
-                <h2 className="text-base font-bold font-editorial text-neutral-950 flex items-center gap-2">
+                <h2 className="text-base font-bold font-display text-neutral-950 flex items-center gap-2">
                   <span className="w-6 h-6 rounded-full bg-neutral-950 text-white text-xs flex items-center justify-center font-mono">
                     3
                   </span>
@@ -433,7 +433,7 @@ export function Checkout() {
                 <label
                   className={`flex flex-col p-4 rounded-2xl border transition-all cursor-pointer ${
                     formData.paymentMethod === 'Cash on Delivery'
-                      ? 'border-neutral-950 bg-[#FAF9F6] shadow-xs'
+                      ? 'border-[#FF6B2C] bg-[#FFF8F3] shadow-xs'
                       : 'border-neutral-200 hover:border-neutral-300'
                   }`}
                 >
@@ -445,12 +445,12 @@ export function Checkout() {
                         value="Cash on Delivery"
                         checked={formData.paymentMethod === 'Cash on Delivery'}
                         onChange={handleChange}
-                        className="w-4 h-4 text-[#C45B32] focus:ring-[#C45B32]"
+                        className="w-4 h-4 text-[#FF6B2C] focus:ring-[#FF6B2C]"
                       />
                       <div className="flex items-center gap-2">
-                        <Banknote className="w-4 h-4 text-[#C45B32]" />
+                        <Banknote className="w-4 h-4 text-[#FF6B2C]" />
                         <span className="text-xs sm:text-sm font-bold text-neutral-900">
-                          Cash on Delivery (Doorstep Inspection)
+                           Cash on Delivery (Doorstep Inspection)
                         </span>
                       </div>
                     </div>
@@ -469,7 +469,7 @@ export function Checkout() {
                 <label
                   className={`flex flex-col p-4 rounded-2xl border transition-all cursor-pointer ${
                     formData.paymentMethod === 'Mobile Financial Services (bKash/Nagad)'
-                      ? 'border-neutral-950 bg-[#FAF9F6] shadow-xs'
+                      ? 'border-[#FF6B2C] bg-[#FFF8F3] shadow-xs'
                       : 'border-neutral-200 hover:border-neutral-300'
                   }`}
                 >
@@ -484,7 +484,7 @@ export function Checkout() {
                           'Mobile Financial Services (bKash/Nagad)'
                         }
                         onChange={handleChange}
-                        className="w-4 h-4 text-[#C45B32] focus:ring-[#C45B32]"
+                        className="w-4 h-4 text-[#FF6B2C] focus:ring-[#FF6B2C]"
                       />
                       <div className="flex items-center gap-2">
                         <Smartphone className="w-4 h-4 text-pink-600" />
@@ -496,7 +496,7 @@ export function Checkout() {
                   </div>
 
                   {formData.paymentMethod === 'Mobile Financial Services (bKash/Nagad)' && (
-                    <div className="mt-3 pt-3 border-t border-neutral-200 pl-7 space-y-3">
+                    <div className="mt-3 pt-3 border-t border-neutral-200/80 pl-7 space-y-3">
                       <p className="text-xs text-neutral-600">
                         Please send payment to AURA Merchant Account: <strong>01844-998822</strong>
                       </p>
@@ -507,7 +507,7 @@ export function Checkout() {
                           placeholder="Your bKash / Nagad Wallet No."
                           value={formData.mobileNumber}
                           onChange={handleChange}
-                          className="px-3.5 py-2.5 rounded-xl border border-neutral-200 text-xs font-mono"
+                          className="px-3.5 py-2.5 rounded-xl border border-neutral-200 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C]"
                         />
                         <input
                           type="text"
@@ -515,7 +515,7 @@ export function Checkout() {
                           placeholder="Transaction TrxID (e.g. 9B47X1K)"
                           value={formData.trxId}
                           onChange={handleChange}
-                          className="px-3.5 py-2.5 rounded-xl border border-neutral-200 text-xs font-mono uppercase"
+                          className="px-3.5 py-2.5 rounded-xl border border-neutral-200 text-xs font-mono uppercase focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C]"
                         />
                       </div>
                     </div>
@@ -526,7 +526,7 @@ export function Checkout() {
                 <label
                   className={`flex flex-col p-4 rounded-2xl border transition-all cursor-pointer ${
                     formData.paymentMethod === 'Credit / Debit Card'
-                      ? 'border-neutral-950 bg-[#FAF9F6] shadow-xs'
+                      ? 'border-[#FF6B2C] bg-[#FFF8F3] shadow-xs'
                       : 'border-neutral-200 hover:border-neutral-300'
                   }`}
                 >
@@ -538,7 +538,7 @@ export function Checkout() {
                         value="Credit / Debit Card"
                         checked={formData.paymentMethod === 'Credit / Debit Card'}
                         onChange={handleChange}
-                        className="w-4 h-4 text-[#C45B32] focus:ring-[#C45B32]"
+                        className="w-4 h-4 text-[#FF6B2C] focus:ring-[#FF6B2C]"
                       />
                       <div className="flex items-center gap-2">
                         <CreditCard className="w-4 h-4 text-neutral-900" />
@@ -550,14 +550,14 @@ export function Checkout() {
                   </div>
 
                   {formData.paymentMethod === 'Credit / Debit Card' && (
-                    <div className="mt-3 pt-3 border-t border-neutral-200 pl-7 space-y-3">
+                    <div className="mt-3 pt-3 border-t border-neutral-200/80 pl-7 space-y-3">
                       <input
                         type="text"
                         name="cardNumber"
                         placeholder="Card Number (4000 1234 5678 9010)"
                         value={formData.cardNumber}
                         onChange={handleChange}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-200 text-xs font-mono"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-200 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C]"
                       />
                       <div className="grid grid-cols-2 gap-3">
                         <input
@@ -588,12 +588,12 @@ export function Checkout() {
           <div className="lg:col-span-5 space-y-6 sticky top-24">
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-6">
               <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
-                <h2 className="text-base font-bold font-editorial text-neutral-950">
+                <h2 className="text-base font-bold font-display text-neutral-950">
                   Review Your Order ({cart.length} items)
                 </h2>
                 <Link
                   to="/cart"
-                  className="text-xs font-mono text-[#C45B32] hover:underline font-semibold"
+                  className="text-xs font-mono text-[#FF6B2C] hover:text-[#E9571F] hover:underline font-semibold"
                 >
                   Edit Bag
                 </Link>
@@ -657,7 +657,7 @@ export function Checkout() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 px-6 rounded-2xl bg-neutral-950 hover:bg-[#C45B32] disabled:opacity-50 text-white text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                className="w-full py-4 px-6 rounded-2xl bg-[#FF6B2C] hover:bg-[#E9571F] disabled:opacity-50 text-white text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md active:scale-[0.99]"
               >
                 {isSubmitting ? (
                   <span>Dispatching Order...</span>

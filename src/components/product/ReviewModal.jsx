@@ -69,7 +69,7 @@ export function ReviewModal({ product, isOpen, onClose, onReviewAdded }) {
           {/* Header */}
           <div className="flex items-center justify-between pb-4 border-b border-neutral-100">
             <div>
-              <h3 className="text-xl font-bold font-editorial text-neutral-950">
+              <h3 className="text-xl font-bold font-display text-neutral-950">
                 Write a Verified Review
               </h3>
               <p className="text-xs text-neutral-500 truncate max-w-xs">{product.name}</p>
@@ -128,7 +128,7 @@ export function ReviewModal({ product, isOpen, onClose, onReviewAdded }) {
                 placeholder="e.g. Tariq Rahman"
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-neutral-950"
+                className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C]"
               />
             </div>
 
@@ -143,7 +143,7 @@ export function ReviewModal({ product, isOpen, onClose, onReviewAdded }) {
                 placeholder="e.g. Exceptional woolen drape and finish"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-neutral-950"
+                className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C]"
               />
             </div>
 
@@ -158,7 +158,7 @@ export function ReviewModal({ product, isOpen, onClose, onReviewAdded }) {
                 placeholder="Share your thoughts on the craftsmanship, fabric feel, tailoring, and sizing..."
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-neutral-950 resize-none"
+                className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C] resize-none"
               />
             </div>
 
@@ -174,7 +174,7 @@ export function ReviewModal({ product, isOpen, onClose, onReviewAdded }) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-6 py-2.5 rounded-xl bg-neutral-950 hover:bg-[#C45B32] text-white text-xs font-semibold transition-colors cursor-pointer flex items-center gap-2 shadow-sm"
+                className="px-6 py-2.5 rounded-xl bg-[#FF6B2C] hover:bg-[#E9571F] text-white text-xs font-semibold transition-all cursor-pointer flex items-center gap-2 shadow-sm"
               >
                 {isSubmitting ? (
                   <span>Publishing...</span>

@@ -51,18 +51,18 @@ const PILLARS = [
 
 export function About() {
   return (
-    <div className="bg-[#FAF9F6] min-h-screen py-8 sm:py-16">
+    <div className="bg-[#FAFAFA] min-h-screen py-8 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24">
         {/* Editorial Story Hero */}
         <div className="max-w-3xl space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 text-white text-xs font-mono font-medium">
-            <Sparkles className="w-3.5 h-3.5 text-[#C45B32]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#FF6B2C]" />
             <span>Studio Philosophy &amp; Vision</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-bold font-editorial text-neutral-950 tracking-tight leading-[1.1]">
+          <h1 className="text-4xl sm:text-6xl font-bold font-display text-neutral-950 tracking-tight leading-[1.1]">
             We believe in things <br />
-            <span className="italic font-normal text-[#C45B32]">crafted to outlast time.</span>
+            <span className="italic font-normal text-[#FF6B2C]">crafted to outlast time.</span>
           </h1>
 
           <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-sans">
@@ -84,10 +84,10 @@ export function About() {
           </div>
 
           <div className="lg:col-span-5 space-y-6 bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-xs">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#C45B32] font-semibold">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#FF6B2C] font-semibold">
               The Atelier Ethos
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-editorial text-neutral-950">
+            <h2 className="text-2xl sm:text-3xl font-bold font-display text-neutral-950">
               Form follows material honesty.
             </h2>
             <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-sans">
@@ -106,10 +106,10 @@ export function About() {
         {/* 4 Pillars of Craftsmanship */}
         <div className="space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#C45B32] font-semibold">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#FF6B2C] font-semibold">
               Our Principles
             </span>
-            <h2 className="text-3xl font-bold font-editorial text-neutral-950">
+            <h2 className="text-3xl font-bold font-display text-neutral-950">
               Pillars of Integrity
             </h2>
           </div>
@@ -120,12 +120,12 @@ export function About() {
               return (
                 <div
                   key={idx}
-                  className="bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-4 hover:border-neutral-900 transition-colors"
+                  className="bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-4 hover:border-[#FF6B2C]/40 transition-colors"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-[#FAF9F6] border border-neutral-200/60 flex items-center justify-center text-[#C45B32]">
+                  <div className="w-12 h-12 rounded-2xl bg-[#FFF1E8] border border-[#FF6B2C]/20 flex items-center justify-center text-[#FF6B2C]">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-base font-bold font-editorial text-neutral-950">
+                  <h3 className="text-base font-bold font-display text-neutral-950">
                     {p.title}
                   </h3>
                   <p className="text-xs text-neutral-500 leading-relaxed font-sans">
@@ -140,10 +140,10 @@ export function About() {
         {/* Timeline */}
         <div className="bg-white p-8 sm:p-14 rounded-3xl border border-neutral-200/80 shadow-xs space-y-10">
           <div className="space-y-2">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#C45B32] font-semibold">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#FF6B2C] font-semibold">
               Historical Milestones
             </span>
-            <h2 className="text-3xl font-bold font-editorial text-neutral-950">
+            <h2 className="text-3xl font-bold font-display text-neutral-950">
               The Evolution of AURA
             </h2>
           </div>
@@ -151,10 +151,10 @@ export function About() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
             {TIMELINE.map((item, idx) => (
               <div key={idx} className="space-y-3 relative">
-                <span className="text-2xl font-bold font-mono text-[#C45B32] block">
+                <span className="text-2xl font-bold font-mono text-[#FF6B2C] block">
                   {item.year}
                 </span>
-                <h4 className="text-sm font-bold font-editorial text-neutral-900">
+                <h4 className="text-sm font-bold font-display text-neutral-900">
                   {item.title}
                 </h4>
                 <p className="text-xs text-neutral-500 leading-relaxed font-sans">

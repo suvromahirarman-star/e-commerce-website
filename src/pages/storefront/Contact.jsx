@@ -39,15 +39,15 @@ export function Contact() {
   };
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen py-8 sm:py-16">
+    <div className="bg-[#FAFAFA] min-h-screen py-8 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header */}
         <div className="max-w-2xl space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 text-white text-xs font-mono font-medium">
-            <Sparkles className="w-3.5 h-3.5 text-[#C45B32]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#FF6B2C]" />
             <span>Concierge &amp; Private Appointments</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-bold font-editorial text-neutral-950 tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold font-display text-neutral-950 tracking-tight">
             Connect With Our Studio
           </h1>
           <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-sans">
@@ -60,15 +60,15 @@ export function Contact() {
           {/* Left Column: Direct Touchpoints (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-6">
-              <h2 className="text-lg font-bold font-editorial text-neutral-950 pb-3 border-b border-neutral-100">
+              <h2 className="text-lg font-bold font-display text-neutral-950 pb-3 border-b border-neutral-100">
                 Direct Channels
               </h2>
 
               <div className="space-y-4 text-xs font-mono">
                 {/* Phone & WhatsApp */}
-                <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#FAF9F6] border border-neutral-200/70">
-                  <div className="p-2.5 rounded-xl bg-white text-neutral-900 shadow-2xs">
-                    <Phone className="w-4 h-4 text-[#C45B32]" />
+                <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#FAFAFA] border border-neutral-200/70">
+                  <div className="p-2.5 rounded-xl bg-[#FFF1E8] text-[#FF6B2C] shadow-2xs">
+                    <Phone className="w-4 h-4 text-[#FF6B2C]" />
                   </div>
                   <div className="space-y-1">
                     <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">
@@ -76,7 +76,7 @@ export function Contact() {
                     </span>
                     <a
                       href="tel:+8801844998822"
-                      className="font-bold text-neutral-900 text-sm hover:text-[#C45B32] transition-colors block"
+                      className="font-bold text-neutral-900 text-sm hover:text-[#FF6B2C] transition-colors block"
                     >
                       +880 1844-998822
                     </a>
@@ -85,9 +85,9 @@ export function Contact() {
                 </div>
 
                 {/* Email */}
-                <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#FAF9F6] border border-neutral-200/70">
-                  <div className="p-2.5 rounded-xl bg-white text-neutral-900 shadow-2xs">
-                    <Mail className="w-4 h-4 text-[#C45B32]" />
+                <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#FAFAFA] border border-neutral-200/70">
+                  <div className="p-2.5 rounded-xl bg-[#FFF1E8] text-[#FF6B2C] shadow-2xs">
+                    <Mail className="w-4 h-4 text-[#FF6B2C]" />
                   </div>
                   <div className="space-y-1">
                     <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">
@@ -95,7 +95,7 @@ export function Contact() {
                     </span>
                     <a
                       href="mailto:concierge@aurastudio.com"
-                      className="font-bold text-neutral-900 text-sm hover:text-[#C45B32] transition-colors block"
+                      className="font-bold text-neutral-900 text-sm hover:text-[#FF6B2C] transition-colors block"
                     >
                       concierge@aurastudio.com
                     </a>
@@ -104,9 +104,9 @@ export function Contact() {
                 </div>
 
                 {/* Studio Location */}
-                <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#FAF9F6] border border-neutral-200/70">
-                  <div className="p-2.5 rounded-xl bg-white text-neutral-900 shadow-2xs">
-                    <MapPin className="w-4 h-4 text-[#C45B32]" />
+                <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#FAFAFA] border border-neutral-200/70">
+                  <div className="p-2.5 rounded-xl bg-[#FFF1E8] text-[#FF6B2C] shadow-2xs">
+                    <MapPin className="w-4 h-4 text-[#FF6B2C]" />
                   </div>
                   <div className="space-y-1">
                     <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">
@@ -125,11 +125,11 @@ export function Contact() {
 
             {/* Operating Hours Box */}
             <div className="bg-neutral-950 text-white p-6 sm:p-8 rounded-3xl space-y-3">
-              <div className="flex items-center gap-2 text-xs font-mono text-[#E8956A]">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#FF6B2C]">
                 <Clock className="w-4 h-4" />
                 <span>Operating Timetable</span>
               </div>
-              <h3 className="text-base font-bold font-editorial">
+              <h3 className="text-base font-bold font-display">
                 Saturday to Thursday: 10:00 AM – 8:00 PM
               </h3>
               <p className="text-xs text-neutral-400 leading-relaxed font-sans">
@@ -141,7 +141,7 @@ export function Contact() {
           {/* Right Column: Contact Message Form (7 cols) */}
           <div className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-xs space-y-6">
             <div className="space-y-1 pb-4 border-b border-neutral-100">
-              <h2 className="text-xl font-bold font-editorial text-neutral-950">
+              <h2 className="text-xl font-bold font-display text-neutral-950">
                 Send a Dispatch Message
               </h2>
               <p className="text-xs text-neutral-500">
@@ -162,7 +162,7 @@ export function Contact() {
                     placeholder="e.g. Farhan Anis"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-neutral-950"
+                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C]"
                   />
                 </div>
 
@@ -177,7 +177,7 @@ export function Contact() {
                     placeholder="name@domain.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-neutral-950"
+                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C]"
                   />
                 </div>
               </div>
@@ -193,7 +193,7 @@ export function Contact() {
                     placeholder="01712-345678"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-neutral-950"
+                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C]"
                   />
                 </div>
 
@@ -205,7 +205,7 @@ export function Contact() {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-neutral-950 bg-white"
+                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C] bg-white"
                   >
                     <option value="General Inquiry">General Atelier Inquiry</option>
                     <option value="Order Tracking">Courier &amp; Delivery Tracking</option>
@@ -227,14 +227,14 @@ export function Contact() {
                   placeholder="How may our concierge assist your atelier experience today?..."
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full p-4 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-neutral-950 resize-none"
+                  className="w-full p-4 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C] resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 px-6 rounded-2xl bg-neutral-950 hover:bg-[#C45B32] disabled:opacity-50 text-white text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                className="w-full py-4 px-6 rounded-2xl bg-[#FF6B2C] hover:bg-[#E9571F] disabled:opacity-50 text-white text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md active:scale-[0.99]"
               >
                 {isSubmitting ? (
                   <span>Transmitting Message...</span>

@@ -54,8 +54,8 @@ export function OrderSuccess() {
 
   if (loading) {
     return (
-      <div className="bg-[#FAF9F6] min-h-[70vh] py-24 text-center space-y-4">
-        <div className="w-12 h-12 rounded-full border-2 border-neutral-900 border-t-transparent animate-spin mx-auto" />
+      <div className="bg-[#FAFAFA] min-h-[70vh] py-24 text-center space-y-4">
+        <div className="w-12 h-12 rounded-full border-2 border-[#FF6B2C] border-t-transparent animate-spin mx-auto" />
         <p className="text-xs font-mono text-neutral-500">Retrieving order details...</p>
       </div>
     );
@@ -63,8 +63,8 @@ export function OrderSuccess() {
 
   if (!order) {
     return (
-      <div className="bg-[#FAF9F6] min-h-[70vh] py-24 text-center space-y-4">
-        <h2 className="text-2xl font-bold font-editorial text-neutral-900">
+      <div className="bg-[#FAFAFA] min-h-[70vh] py-24 text-center space-y-4">
+        <h2 className="text-2xl font-bold font-display text-neutral-900">
           No Order Found
         </h2>
         <p className="text-xs text-neutral-500">
@@ -72,7 +72,7 @@ export function OrderSuccess() {
         </p>
         <Link
           to="/shop"
-          className="inline-block px-6 py-3 rounded-full bg-neutral-950 text-white text-xs font-mono font-semibold"
+          className="inline-block px-6 py-3 rounded-full bg-[#FF6B2C] hover:bg-[#E9571F] text-white text-xs font-mono font-semibold transition-colors"
         >
           Return to Catalog
         </Link>
@@ -81,7 +81,7 @@ export function OrderSuccess() {
   }
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen py-8 sm:py-16 print:bg-white print:py-0">
+    <div className="bg-[#FAFAFA] min-h-screen py-8 sm:py-16 print:bg-white print:py-0">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Success Confirmation Card */}
         <div className="bg-white rounded-3xl p-6 sm:p-12 border border-neutral-200/80 shadow-xs space-y-8 print:border-none print:shadow-none">
@@ -91,11 +91,11 @@ export function OrderSuccess() {
               <CheckCircle2 className="w-8 h-8" />
             </div>
 
-            <span className="text-xs font-mono uppercase tracking-widest text-[#C45B32] font-semibold block">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#FF6B2C] font-semibold block">
               Order Confirmed &amp; Dispatched
             </span>
 
-            <h1 className="text-3xl sm:text-4xl font-bold font-editorial text-neutral-950">
+            <h1 className="text-3xl sm:text-4xl font-bold font-display text-neutral-950">
               Thank You For Your Patronage
             </h1>
 
@@ -115,10 +115,10 @@ export function OrderSuccess() {
           </div>
 
           {/* Logistics & Delivery Timeline Banner */}
-          <div className="p-4 sm:p-6 rounded-2xl bg-[#FAF9F6] border border-neutral-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono">
+          <div className="p-4 sm:p-6 rounded-2xl bg-[#FAFAFA] border border-neutral-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-white text-neutral-900 shadow-2xs">
-                <Truck className="w-5 h-5 text-[#C45B32]" />
+              <div className="p-2.5 rounded-xl bg-[#FFF1E8] text-[#FF6B2C] shadow-2xs">
+                <Truck className="w-5 h-5 text-[#FF6B2C]" />
               </div>
               <div>
                 <span className="text-neutral-400 block text-[10px] uppercase">
@@ -141,10 +141,10 @@ export function OrderSuccess() {
             {/* Customer Contact */}
             <div className="p-5 rounded-2xl bg-neutral-50/70 border border-neutral-100 space-y-2">
               <div className="flex items-center gap-1.5 text-neutral-400 font-mono uppercase tracking-wider text-[10px] font-semibold">
-                <Mail className="w-3.5 h-3.5 text-[#C45B32]" />
+                <Mail className="w-3.5 h-3.5 text-[#FF6B2C]" />
                 <span>Client Contact</span>
               </div>
-              <div className="font-bold text-neutral-900 text-sm font-editorial">
+              <div className="font-bold text-neutral-900 text-sm font-display">
                 {order.customer.fullName}
               </div>
               <div className="text-neutral-500 font-mono">{order.customer.phone}</div>
@@ -154,7 +154,7 @@ export function OrderSuccess() {
             {/* Shipping Address */}
             <div className="p-5 rounded-2xl bg-neutral-50/70 border border-neutral-100 space-y-2">
               <div className="flex items-center gap-1.5 text-neutral-400 font-mono uppercase tracking-wider text-[10px] font-semibold">
-                <MapPin className="w-3.5 h-3.5 text-[#C45B32]" />
+                <MapPin className="w-3.5 h-3.5 text-[#FF6B2C]" />
                 <span>Destination Address</span>
               </div>
               <div className="text-neutral-900 font-medium leading-relaxed">
@@ -169,7 +169,7 @@ export function OrderSuccess() {
             {/* Payment Details */}
             <div className="p-5 rounded-2xl bg-neutral-50/70 border border-neutral-100 space-y-2">
               <div className="flex items-center gap-1.5 text-neutral-400 font-mono uppercase tracking-wider text-[10px] font-semibold">
-                <Banknote className="w-3.5 h-3.5 text-[#C45B32]" />
+                <Banknote className="w-3.5 h-3.5 text-[#FF6B2C]" />
                 <span>Payment Settlement</span>
               </div>
               <div className="font-bold text-neutral-900 text-sm">
@@ -186,7 +186,7 @@ export function OrderSuccess() {
 
           {/* Itemized Order Breakdown Table */}
           <div className="space-y-4 pt-6">
-            <h3 className="text-base font-bold font-editorial text-neutral-950">
+            <h3 className="text-base font-bold font-display text-neutral-950">
               Purchased Garments &amp; Objects
             </h3>
 
@@ -261,7 +261,7 @@ export function OrderSuccess() {
 
             <Link
               to="/shop"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-neutral-950 hover:bg-[#C45B32] text-white text-xs font-mono font-semibold transition-colors shadow-sm"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#FF6B2C] hover:bg-[#E9571F] text-white text-xs font-mono font-semibold transition-all shadow-sm hover:shadow-md cursor-pointer"
             >
               <span>Continue Shopping</span>
               <ArrowRight className="w-4 h-4" />

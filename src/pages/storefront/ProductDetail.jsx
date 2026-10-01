@@ -115,7 +115,7 @@ export function ProductDetail() {
   if (!product) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-24 text-center space-y-4">
-        <h2 className="text-3xl font-bold font-editorial text-neutral-900">
+        <h2 className="text-3xl font-bold font-display text-neutral-900">
           Garment Not Found
         </h2>
         <p className="text-neutral-500">
@@ -123,7 +123,7 @@ export function ProductDetail() {
         </p>
         <Link
           to="/shop"
-          className="inline-block px-6 py-3 rounded-full bg-neutral-950 text-white text-xs font-mono font-semibold"
+          className="inline-block px-6 py-3 rounded-full bg-neutral-950 hover:bg-[#FF6B2C] text-white text-xs font-mono font-semibold transition-colors"
         >
           Return to Catalog
         </Link>
@@ -154,7 +154,7 @@ export function ProductDetail() {
   };
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen py-8 sm:py-12">
+    <div className="bg-[#FAFAFA] min-h-screen py-8 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Breadcrumb Navigation */}
         <nav className="flex items-center gap-2 text-xs font-mono text-neutral-400">
@@ -217,7 +217,7 @@ export function ProductDetail() {
                 className={`absolute top-5 right-5 p-3 rounded-full transition-all cursor-pointer shadow-md ${
                   inWishlist
                     ? 'bg-rose-500 text-white'
-                    : 'bg-white/85 text-neutral-700 hover:bg-white hover:text-neutral-950'
+                    : 'bg-white/90 text-neutral-700 hover:bg-white hover:text-neutral-950'
                 }`}
                 aria-label="Toggle wishlist"
               >
@@ -235,7 +235,7 @@ export function ProductDetail() {
                     onClick={() => setActiveImage(idx)}
                     className={`relative w-20 h-24 rounded-2xl overflow-hidden border-2 transition-all flex-shrink-0 cursor-pointer ${
                       activeImage === idx
-                        ? 'border-[#C45B32] ring-2 ring-[#C45B32]/30 shadow-md'
+                        ? 'border-[#FF6B2C] ring-2 ring-[#FF6B2C]/20 shadow-md'
                         : 'border-transparent opacity-75 hover:opacity-100'
                     }`}
                   >
@@ -251,7 +251,7 @@ export function ProductDetail() {
             <div className="space-y-3">
               {/* Brand & Stock */}
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono uppercase tracking-widest text-[#C45B32] font-semibold">
+                <span className="text-xs font-mono uppercase tracking-widest text-[#FF6B2C] font-semibold">
                   {product.brand}
                 </span>
 
@@ -262,7 +262,7 @@ export function ProductDetail() {
               </div>
 
               {/* Title */}
-              <h1 className="text-3xl sm:text-4xl font-bold font-editorial text-neutral-950 tracking-tight leading-tight">
+              <h1 className="text-3xl sm:text-4xl font-bold font-display text-neutral-950 tracking-tight leading-tight">
                 {product.name}
               </h1>
 
@@ -275,7 +275,7 @@ export function ProductDetail() {
                 <span className="text-neutral-300">•</span>
                 <a
                   href="#customer-reviews"
-                  className="text-neutral-500 hover:text-neutral-900 underline cursor-pointer"
+                  className="text-neutral-500 hover:text-[#FF6B2C] underline cursor-pointer"
                 >
                   {reviews.length || product.reviewCount || 14} Verified Reviews
                 </a>
@@ -343,7 +343,7 @@ export function ProductDetail() {
                   <button
                     type="button"
                     onClick={() => setIsSizeGuideOpen(true)}
-                    className="inline-flex items-center gap-1 text-[#C45B32] hover:underline font-semibold cursor-pointer"
+                    className="inline-flex items-center gap-1 text-[#FF6B2C] hover:text-[#E9571F] font-semibold cursor-pointer"
                   >
                     <Ruler className="w-3.5 h-3.5" />
                     <span>View Size Guide</span>
@@ -358,7 +358,7 @@ export function ProductDetail() {
                       className={`min-w-12 py-2.5 px-4 rounded-xl text-xs font-mono font-medium transition-all cursor-pointer border ${
                         selectedSize === s
                           ? 'bg-neutral-950 text-white border-neutral-950 shadow-sm'
-                          : 'bg-white text-neutral-800 border-neutral-200 hover:border-neutral-400'
+                          : 'bg-white text-neutral-800 border-neutral-200 hover:border-[#FF6B2C]'
                       }`}
                     >
                       {s}
@@ -397,7 +397,7 @@ export function ProductDetail() {
                   type="button"
                   onClick={handleAddToCart}
                   disabled={isAdding}
-                  className="flex-1 py-3.5 px-6 rounded-2xl bg-neutral-950 hover:bg-[#C45B32] text-white text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                  className="flex-1 py-3.5 px-6 rounded-2xl bg-[#FF6B2C] hover:bg-[#E9571F] text-white text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md active:scale-[0.99]"
                 >
                   {isAdding ? (
                     <>
@@ -417,7 +417,7 @@ export function ProductDetail() {
               <button
                 type="button"
                 onClick={handleBuyNow}
-                className="w-full py-3.5 px-6 rounded-2xl bg-[#FAF0EB] text-[#C45B32] hover:bg-[#F5E2D7] text-xs sm:text-sm font-semibold transition-colors cursor-pointer text-center"
+                className="w-full py-3.5 px-6 rounded-2xl bg-[#FFF1E8] text-[#FF6B2C] hover:bg-[#FFE6D6] text-xs sm:text-sm font-semibold transition-colors cursor-pointer text-center"
               >
                 Instant Guest Checkout (Direct to Cart)
               </button>
@@ -426,7 +426,7 @@ export function ProductDetail() {
             {/* Atelier Guarantees */}
             <div className="grid grid-cols-2 gap-3 pt-4 border-t border-neutral-200 text-xs text-neutral-600">
               <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-white border border-neutral-200/80">
-                <Truck className="w-4 h-4 text-[#C45B32] flex-shrink-0" />
+                <Truck className="w-4 h-4 text-[#FF6B2C] flex-shrink-0" />
                 <span>Complimentary express delivery over ৳3,000</span>
               </div>
               <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-white border border-neutral-200/80">
@@ -496,10 +496,10 @@ export function ProductDetail() {
         <section id="customer-reviews" className="pt-12 border-t border-neutral-200/90 space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div className="space-y-1">
-              <span className="text-xs font-mono uppercase tracking-widest text-[#C45B32] font-semibold">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#FF6B2C] font-semibold">
                 Client Verification
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold font-editorial text-neutral-950">
+              <h2 className="text-2xl sm:text-3xl font-bold font-display text-neutral-950">
                 Customer Reviews ({reviews.length})
               </h2>
             </div>
@@ -507,7 +507,7 @@ export function ProductDetail() {
             <button
               type="button"
               onClick={() => setIsReviewModalOpen(true)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-950 hover:bg-[#C45B32] text-white text-xs font-mono font-semibold transition-colors cursor-pointer shadow-xs"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-950 hover:bg-[#FF6B2C] text-white text-xs font-mono font-semibold transition-colors cursor-pointer shadow-xs"
             >
               <MessageSquarePlus className="w-4 h-4" />
               <span>Write a Review</span>
@@ -544,7 +544,7 @@ export function ProductDetail() {
                       </span>
                     </div>
 
-                    <h4 className="text-sm font-bold font-editorial text-neutral-900">
+                    <h4 className="text-sm font-bold font-display text-neutral-900">
                       "{rev.title}"
                     </h4>
                     <p className="text-xs text-neutral-600 leading-relaxed font-sans">
@@ -578,16 +578,16 @@ export function ProductDetail() {
           <section className="pt-12 border-t border-neutral-200/90 space-y-8">
             <div className="flex items-center justify-between">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-[#C45B32] font-semibold">
+                <span className="text-xs font-mono uppercase tracking-widest text-[#FF6B2C] font-semibold">
                   Complementary Wardrobe
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-bold font-editorial text-neutral-950">
+                <h2 className="text-2xl sm:text-3xl font-bold font-display text-neutral-950">
                   You May Also Like
                 </h2>
               </div>
               <Link
                 to="/shop"
-                className="text-xs font-mono font-semibold text-neutral-700 hover:text-[#C45B32] transition-colors"
+                className="text-xs font-mono font-semibold text-neutral-700 hover:text-[#FF6B2C] transition-colors"
               >
                 View Full Catalog →
               </Link>

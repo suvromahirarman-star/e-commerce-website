@@ -70,10 +70,10 @@ export function AdminLayout() {
           <div className="p-6 border-b border-neutral-900 flex items-center justify-between">
             <Link to="/admin" className="space-y-0.5">
               <div className="flex items-center gap-2">
-                <span className="text-xl font-bold font-editorial tracking-widest text-white">
+                <span className="text-xl font-bold font-display tracking-widest text-white">
                   AURA
                 </span>
-                <span className="px-2 py-0.5 rounded-full text-[9px] font-mono bg-[#C45B32] text-white uppercase tracking-wider font-semibold">
+                <span className="px-2 py-0.5 rounded-full text-[9px] font-mono bg-[#FF6B2C] text-white uppercase tracking-wider font-semibold">
                   Admin
                 </span>
               </div>
@@ -110,7 +110,7 @@ export function AdminLayout() {
                       : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-[#C45B32]' : 'text-neutral-400'}`} />
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-[#FF6B2C]' : 'text-neutral-400'}`} />
                   <span>{item.label}</span>
                 </NavLink>
               );
@@ -127,7 +127,7 @@ export function AdminLayout() {
             className="flex items-center justify-between p-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-neutral-300 text-xs font-mono transition-colors"
           >
             <span className="flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#C45B32]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#FF6B2C]" />
               <span>Live Storefront</span>
             </span>
             <ExternalLink className="w-3.5 h-3.5 text-neutral-400" />
@@ -185,7 +185,7 @@ export function AdminLayout() {
           <div className="flex items-center gap-3">
             <Link
               to="/admin/products/new"
-              className="px-3.5 py-1.5 rounded-xl bg-neutral-950 hover:bg-[#C45B32] text-white text-xs font-mono font-semibold transition-colors flex items-center gap-1.5 shadow-2xs"
+              className="px-3.5 py-1.5 rounded-xl bg-neutral-950 hover:bg-[#FF6B2C] text-white text-xs font-mono font-semibold transition-colors flex items-center gap-1.5 shadow-2xs"
             >
               <span>+ Add Product</span>
             </Link>

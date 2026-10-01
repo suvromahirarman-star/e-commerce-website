@@ -62,14 +62,14 @@ export function Cart() {
 
   if (cart.length === 0) {
     return (
-      <div className="bg-[#FAF9F6] min-h-[70vh] py-16 sm:py-24">
+      <div className="bg-[#FAFAFA] min-h-[70vh] py-16 sm:py-24">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <div className="bg-white rounded-3xl p-10 sm:p-14 border border-neutral-200/80 shadow-xs space-y-6">
-            <div className="w-16 h-16 rounded-2xl bg-neutral-100 mx-auto flex items-center justify-center text-neutral-400">
+            <div className="w-16 h-16 rounded-2xl bg-[#FFF1E8] mx-auto flex items-center justify-center text-[#FF6B2C]">
               <ShoppingBag className="w-8 h-8" />
             </div>
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold font-editorial text-neutral-950">
+              <h1 className="text-3xl font-bold font-display text-neutral-950">
                 Your Bag is Currently Empty
               </h1>
               <p className="text-sm text-neutral-500 max-w-md mx-auto leading-relaxed">
@@ -78,7 +78,7 @@ export function Cart() {
             </div>
             <Link
               to="/shop"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-neutral-950 hover:bg-[#C45B32] text-white text-xs font-mono font-semibold transition-colors shadow-md"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#FF6B2C] hover:bg-[#E9571F] text-white text-xs font-mono font-semibold transition-colors shadow-sm hover:shadow-md"
             >
               <span>Explore The Catalog</span>
               <ArrowRight className="w-4 h-4" />
@@ -90,7 +90,7 @@ export function Cart() {
   }
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen py-8 sm:py-12">
+    <div className="bg-[#FAFAFA] min-h-screen py-8 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Breadcrumb Navigation */}
         <nav className="flex items-center gap-2 text-xs font-mono text-neutral-400">
@@ -108,10 +108,10 @@ export function Cart() {
         {/* Page Title */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-neutral-200">
           <div className="space-y-1">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#C45B32] font-semibold">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#FF6B2C] font-semibold">
               Atelier Selection
             </span>
-            <h1 className="text-3xl sm:text-4xl font-bold font-editorial text-neutral-950">
+            <h1 className="text-3xl sm:text-4xl font-bold font-display text-neutral-950">
               Your Shopping Bag
             </h1>
           </div>
@@ -130,7 +130,7 @@ export function Cart() {
         <div className="bg-white p-4 sm:p-5 rounded-2xl border border-neutral-200/80 shadow-xs space-y-2">
           <div className="flex items-center justify-between text-xs font-mono">
             <div className="flex items-center gap-2">
-              <Truck className="w-4 h-4 text-[#C45B32]" />
+              <Truck className="w-4 h-4 text-[#FF6B2C]" />
               <span className="font-semibold text-neutral-900">
                 {isFreeShipping ? (
                   <span className="text-emerald-700 font-bold">
@@ -149,7 +149,7 @@ export function Cart() {
           <div className="w-full h-2 rounded-full bg-neutral-100 overflow-hidden">
             <motion.div
               className={`h-full rounded-full ${
-                isFreeShipping ? 'bg-emerald-600' : 'bg-[#C45B32]'
+                isFreeShipping ? 'bg-emerald-600' : 'bg-[#FF6B2C]'
               }`}
               initial={{ width: 0 }}
               animate={{ width: `${freeShippingProgress}%` }}
@@ -194,7 +194,7 @@ export function Cart() {
                         <h3 className="text-sm sm:text-base font-semibold text-neutral-900 truncate">
                           <Link
                             to={`/product/${item.product.slug}`}
-                            className="hover:text-[#C45B32] transition-colors"
+                            className="hover:text-[#FF6B2C] transition-colors"
                           >
                             {item.product.name}
                           </Link>
@@ -280,7 +280,7 @@ export function Cart() {
           {/* Right Column: Order Summary & Checkout (4 cols) */}
           <div className="lg:col-span-4 space-y-6 sticky top-24">
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-neutral-200/80 shadow-xs space-y-6">
-              <h2 className="text-lg font-bold font-editorial text-neutral-950 pb-4 border-b border-neutral-100">
+              <h2 className="text-lg font-bold font-display text-neutral-950 pb-4 border-b border-neutral-100">
                 Order Summary
               </h2>
 
@@ -310,12 +310,12 @@ export function Cart() {
                       placeholder="Try 'AURA10'"
                       value={couponCode}
                       onChange={(e) => setCouponCode(e.target.value)}
-                      className="flex-1 px-4 py-2.5 rounded-xl border border-neutral-200 text-xs font-mono uppercase focus:outline-none focus:ring-2 focus:ring-neutral-950"
+                      className="flex-1 px-4 py-2.5 rounded-xl border border-neutral-200 text-xs font-mono uppercase focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C]"
                     />
                     <button
                       type="submit"
                       disabled={isApplyingCoupon || !couponCode.trim()}
-                      className="px-4 py-2.5 rounded-xl bg-neutral-950 hover:bg-[#C45B32] disabled:opacity-50 text-white text-xs font-mono font-semibold transition-colors cursor-pointer"
+                      className="px-4 py-2.5 rounded-xl bg-neutral-950 hover:bg-[#FF6B2C] disabled:opacity-50 text-white text-xs font-mono font-semibold transition-colors cursor-pointer"
                     >
                       Apply
                     </button>
@@ -360,7 +360,7 @@ export function Cart() {
               <button
                 type="button"
                 onClick={() => navigate('/checkout')}
-                className="w-full py-4 px-6 rounded-2xl bg-neutral-950 hover:bg-[#C45B32] text-white text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                className="w-full py-4 px-6 rounded-2xl bg-[#FF6B2C] hover:bg-[#E9571F] text-white text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md active:scale-[0.99]"
               >
                 <span>Proceed to Guest Checkout</span>
                 <ArrowRight className="w-4 h-4" />

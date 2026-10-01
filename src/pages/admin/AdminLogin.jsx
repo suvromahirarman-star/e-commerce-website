@@ -42,10 +42,10 @@ export function AdminLogin() {
       {/* Top Bar */}
       <div className="flex items-center justify-between max-w-5xl mx-auto w-full">
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold font-editorial tracking-widest text-white">
+          <span className="text-xl font-bold font-display tracking-widest text-white">
             AURA
           </span>
-          <span className="text-[9px] font-mono uppercase tracking-wider bg-[#C45B32] text-white px-2 py-0.5 rounded-full font-semibold">
+          <span className="text-[9px] font-mono uppercase tracking-wider bg-[#FF6B2C] text-white px-2 py-0.5 rounded-full font-semibold">
             Admin Portal
           </span>
         </Link>
@@ -62,10 +62,10 @@ export function AdminLogin() {
       {/* Main Login Card */}
       <div className="max-w-md w-full mx-auto my-12 bg-white rounded-3xl p-8 sm:p-10 shadow-2xl space-y-6">
         <div className="space-y-2 text-center">
-          <div className="w-12 h-12 rounded-2xl bg-neutral-100 mx-auto flex items-center justify-center text-neutral-950">
-            <Lock className="w-6 h-6 text-[#C45B32]" />
+          <div className="w-12 h-12 rounded-2xl bg-[#FFF1E8] mx-auto flex items-center justify-center text-[#FF6B2C]">
+            <Lock className="w-6 h-6 text-[#FF6B2C]" />
           </div>
-          <h1 className="text-2xl font-bold font-editorial text-neutral-950">
+          <h1 className="text-2xl font-bold font-display text-neutral-950">
             Atelier Management Sign-In
           </h1>
           <p className="text-xs text-neutral-500 font-sans">
@@ -74,9 +74,9 @@ export function AdminLogin() {
         </div>
 
         {/* Demo Credentials Hint */}
-        <div className="p-3.5 rounded-2xl bg-[#FAF0EB] border border-[#F2D1C4] text-xs font-mono text-[#8C3A1A] space-y-1">
+        <div className="p-3.5 rounded-2xl bg-[#FFF1E8] border border-[#FF6B2C]/20 text-xs font-mono text-[#C94716] space-y-1">
           <div className="flex items-center gap-1.5 font-bold">
-            <KeyRound className="w-3.5 h-3.5 text-[#C45B32]" />
+            <KeyRound className="w-3.5 h-3.5 text-[#FF6B2C]" />
             <span>Pre-Filled Demo Access</span>
           </div>
           <div className="text-[11px] text-[#A64A25]">
@@ -96,7 +96,7 @@ export function AdminLogin() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-neutral-950"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C]"
               />
             </div>
           </div>
@@ -112,7 +112,7 @@ export function AdminLogin() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-neutral-950"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20 focus:border-[#FF6B2C]"
               />
             </div>
           </div>
@@ -120,7 +120,7 @@ export function AdminLogin() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3.5 px-6 rounded-2xl bg-neutral-950 hover:bg-[#C45B32] disabled:opacity-50 text-white text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
+            className="w-full py-3.5 px-6 rounded-2xl bg-[#FF6B2C] hover:bg-[#E9571F] disabled:opacity-50 text-white text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md"
           >
             {isSubmitting ? (
               <span>Authenticating Session...</span>

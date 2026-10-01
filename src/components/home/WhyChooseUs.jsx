@@ -5,79 +5,79 @@ const BENEFITS = [
   {
     icon: Truck,
     title: 'Complimentary Express Delivery',
-    description: 'Free white-glove courier shipping nationwide on all orders over ৳3,000. Securely packed and tracked.',
+    description: 'Free courier shipping nationwide on all orders over ৳3,000. Securely packed and tracked in real time.',
     badge: '48h Dispatch',
   },
   {
     icon: ShieldCheck,
     title: '100% Traceable Craftsmanship',
-    description: 'Direct relationships with ethical European mills and workshops. Zero synthetic shortcuts.',
+    description: 'Direct partnerships with ethical European mills and workshops. Zero synthetic shortcuts or overproduction.',
     badge: 'Certified Atelier',
   },
   {
     icon: RefreshCw,
     title: '14-Day Doorstep Returns',
-    description: 'No questions asked exchange or full refund policy. Our courier picks up directly from your location.',
+    description: 'No questions asked exchange or full refund policy. Our courier picks up directly from your doorstep.',
     badge: 'Frictionless',
   },
   {
     icon: Headphones,
     title: 'Dedicated Styling Concierge',
-    description: 'Personalized fit advice, garment care guidance, and order support via WhatsApp, phone, or email.',
+    description: 'Personalized fit advice, fabric care guidance, and order support via WhatsApp, phone, or email.',
     badge: '7 Days a Week',
   },
 ];
 
 export function WhyChooseUs() {
   return (
-    <section className="py-16 sm:py-24 bg-white border-b border-neutral-200/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section className="py-16 sm:py-24 bg-white border-b border-[#EAEAEA]">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-2">
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-[#C45B32] font-semibold">
-            <Award className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-[#FF6B2C] font-bold">
+            <Award className="w-3.5 h-3.5 text-[#FF6B2C]" />
             <span>The AURA Standard</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold font-editorial text-neutral-950 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold font-display text-neutral-950 tracking-tight leading-tight">
             Commitment to Perfection
           </h2>
-          <p className="text-sm text-neutral-500">
-            Every garment and service touchpoint is engineered to deliver an elevated, stress-free luxury shopping experience.
+          <p className="text-sm text-[#666666] font-sans">
+            Every garment and service touchpoint is engineered to deliver an elevated, stress-free modern shopping experience.
           </p>
         </div>
 
-        {/* 4 Pillars Grid */}
+        {/* 4 Pillars Grid (Pure White & Subtle Orange Cards) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {BENEFITS.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
-                className="group relative bg-[#FAF9F6] p-6 sm:p-8 rounded-3xl border border-neutral-200/70 hover:border-neutral-900 transition-all duration-300 hover:shadow-lg flex flex-col justify-between space-y-4"
+                className="group relative bg-[#FBFBFA] hover:bg-[#FFF8F3] p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-[#EAEAEA] hover:border-[#FF6B2C]/40 transition-all duration-300 hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)] hover:-translate-y-1 flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-4">
                   {/* Icon & Badge */}
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-white shadow-xs border border-neutral-200/60 flex items-center justify-center text-neutral-950 group-hover:bg-[#C45B32] group-hover:text-white transition-colors duration-300">
-                      <Icon className="w-6 h-6" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#FFF1E8] group-hover:bg-[#FF6B2C] border border-[#FF6B2C]/20 group-hover:border-[#FF6B2C] flex items-center justify-center text-[#FF6B2C] group-hover:text-white transition-all duration-300 shadow-2xs">
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-mono uppercase tracking-wider font-semibold text-neutral-500 bg-white px-2.5 py-1 rounded-full border border-neutral-200/60">
+                    <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-[#FF6B2C] bg-[#FFF1E8] px-2.5 py-1 rounded-full border border-[#FF6B2C]/20">
                       {item.badge}
                     </span>
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-base font-bold font-editorial text-neutral-950">
+                  <h3 className="text-base font-bold font-display text-neutral-950">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-neutral-500 leading-relaxed font-sans">
+                  <p className="text-xs sm:text-sm text-[#666666] leading-relaxed font-sans">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-2 border-t border-neutral-200/50 flex items-center gap-1.5 text-[11px] font-mono text-[#C45B32] font-semibold">
-                  <Sparkles className="w-3 h-3" />
-                  <span>Guaranteed Standards</span>
+                <div className="pt-3 border-t border-[#EAEAEA] flex items-center gap-1.5 text-[11px] font-mono text-[#FF6B2C] font-semibold">
+                  <Sparkles className="w-3 h-3 text-[#FF6B2C]" />
+                  <span>Guaranteed Standard</span>
                 </div>
               </div>
             );

@@ -1,17 +1,16 @@
 /**
- * Admin Service (API-Ready Abstraction Layer)
+ * Admin Service (API-Connected Layer)
  * Aggregates operational analytics, inventory levels, guest customer directory, and homepage CMS
  */
 
+import { apiClient } from './apiClient';
 import { mockAdminStats } from '../data/mockAdminStats';
-import { productService } from './productService';
-import { orderService } from './orderService';
 
 const CMS_STORAGE_KEY = 'aura_homepage_cms';
 
 const defaultCmsContent = {
   hero: {
-    badge: 'Autum / Winter 2026 Collection',
+    badge: 'Autumn / Winter 2026 Collection',
     headline: 'Designed with Intention. Crafted to Endure.',
     supportingCopy: 'Architectural tailoring, Australian merino wool, and Italian vegetable-tanned leather essentials crafted for the modern wardrobe.',
     primaryCtaText: 'Explore New Arrivals',
@@ -62,172 +61,127 @@ export const adminService = {
    * Get high-level dashboard KPIs and charts
    */
   async getDashboardStats() {
-    await new Promise((resolve) => setTimeout(resolve, 80));
-    const products = await productService.getProducts();
-    const orders = await orderService.getOrders();
-
-    const totalRevenue = orders
-      .filter((o) => o.orderStatus !== 'Cancelled')
-      .reduce((sum, o) => sum + (o.total || 0), 0);
-
-    const customersMap = new Map();
-    orders.forEach((o) => {
-      if (o.customer?.email) customersMap.set(o.customer.email, true);
-    });
-
-    // Count fulfillment pipeline breakdown
-    const statusCounts = {
-      Delivered: 0,
-      Shipped: 0,
-      Processing: 0,
-      Pending: 0,
-    };
-    orders.forEach((o) => {
-      const st = o.orderStatus || 'Pending';
-      if (statusCounts[st] !== undefined) {
-        statusCounts[st] += 1;
-      } else {
-        statusCounts[st] = 1;
-      }
-    });
-    const orderStatusBreakdown = Object.entries(statusCounts).map(([status, count]) => ({
-      status,
-      count,
-    }));
-
-    const salesTrend = (mockAdminStats.salesTrend7Days || []).map((d) => ({
-      day: d.day,
-      amount: d.revenue ?? d.amount ?? 0,
-      orders: d.orders ?? 0,
-    }));
-
-    return {
-      kpis: {
-        totalRevenue,
-        totalOrders: orders.length,
-        totalProducts: products.length,
-        totalCustomers: customersMap.size,
-      },
-      salesTrend,
-      salesTrend7Days: mockAdminStats.salesTrend7Days,
-      categoryBreakdown: mockAdminStats.categoryBreakdown,
-      orderStatusBreakdown,
-      recentOrders: orders.slice(0, 5),
-      lowStockProducts: products.filter((p) => (p.stock || 0) <= 10).slice(0, 5),
-    };
+    try {
+      const stats = await apiClient.get('/admin/dashboard/stats');
+      return stats;
+    } catch (err) {
+      console.warn('Dashboard stats API offline, falling back to mock KPIs:', err.message);
+      return {
+        kpis: {
+          totalRevenue: 29840,
+          totalOrders: 5,
+          totalProducts: 12,
+          totalCustomers: 5,
+        },
+        salesTrend: (mockAdminStats.salesTrend7Days || []).map((d) => ({
+          day: d.day,
+          amount: d.revenue ?? d.amount ?? 0,
+          orders: d.orders ?? 0,
+        })),
+        salesTrend7Days: mockAdminStats.salesTrend7Days,
+        categoryBreakdown: mockAdminStats.categoryBreakdown,
+        orderStatusBreakdown: [
+          { status: 'Delivered', count: 1 },
+          { status: 'Shipped', count: 1 },
+          { status: 'Processing', count: 1 },
+          { status: 'Pending', count: 2 },
+        ],
+        recentOrders: [],
+        lowStockProducts: [],
+      };
+    }
   },
 
   /**
    * Get inventory tracking table data
    */
-  async getInventory() {
-    await new Promise((resolve) => setTimeout(resolve, 60));
-    const products = await productService.getProducts();
-    return products.map((p) => ({
-      id: p.id,
-      name: p.name,
-      sku: p.sku,
-      category: p.category,
-      price: p.price,
-      stock: p.stock,
-      status: p.stock === 0 ? 'Out of Stock' : p.stock <= 10 ? 'Low Stock' : 'In Stock',
-      image: p.images?.[0] || '',
-    }));
+  async getInventory(filterType = 'all', searchQuery = '') {
+    try {
+      const items = await apiClient.get('/admin/inventory', {
+        filterType,
+        search: searchQuery,
+      });
+      return Array.isArray(items) ? items : [];
+    } catch (err) {
+      return [];
+    }
   },
 
   /**
-   * Alias for getCustomersFromOrders for admin directory
+   * Get guest customer directory
    */
-  async getGuestCustomers() {
-    return this.getCustomersFromOrders();
+  async getGuestCustomers(searchQuery = '') {
+    try {
+      const customers = await apiClient.get('/admin/customers', { search: searchQuery });
+      return Array.isArray(customers) ? customers : [];
+    } catch (err) {
+      return [];
+    }
   },
 
-  /**
-   * Derive customer profiles from guest orders
-   */
   async getCustomersFromOrders() {
-    await new Promise((resolve) => setTimeout(resolve, 70));
-    const orders = await orderService.getOrders();
-    const customersMap = new Map();
-
-    orders.forEach((order) => {
-      const email = order.customer?.email || 'guest@example.com';
-      if (!customersMap.has(email)) {
-        customersMap.set(email, {
-          fullName: order.customer?.fullName || 'Guest Customer',
-          email,
-          phone: order.customer?.phone || '—',
-          city: order.customer?.city || '—',
-          address: order.customer?.address || '—',
-          orderCount: 0,
-          totalSpent: 0,
-          lastOrderDate: order.createdAt,
-          orders: [],
-        });
-      }
-
-      const cust = customersMap.get(email);
-      cust.orderCount += 1;
-      cust.totalSpent += order.total || 0;
-      cust.orders.push(order.id);
-      if (new Date(order.createdAt) > new Date(cust.lastOrderDate)) {
-        cust.lastOrderDate = order.createdAt;
-      }
-    });
-
-    return Array.from(customersMap.values());
+    return this.getGuestCustomers();
   },
 
   /**
    * Get homepage CMS config
    */
-  getHomepageContent() {
+  async getHomepageContent() {
     try {
-      const saved = localStorage.getItem(CMS_STORAGE_KEY);
-      return saved ? JSON.parse(saved) : defaultCmsContent;
-    } catch (e) {
-      return defaultCmsContent;
+      const content = await apiClient.get('/content/homepage');
+      return content || defaultCmsContent;
+    } catch (err) {
+      try {
+        const saved = localStorage.getItem(CMS_STORAGE_KEY);
+        return saved ? JSON.parse(saved) : defaultCmsContent;
+      } catch (e) {
+        return defaultCmsContent;
+      }
     }
   },
 
   /**
    * Update homepage CMS config
    */
-  updateHomepageContent(newContent) {
+  async updateHomepageContent(newContent) {
     try {
+      const updated = await apiClient.put('/admin/content/homepage', newContent);
+      return updated;
+    } catch (err) {
       const merged = { ...defaultCmsContent, ...newContent };
       localStorage.setItem(CMS_STORAGE_KEY, JSON.stringify(merged));
       return merged;
-    } catch (e) {
-      console.error('Failed to save homepage CMS:', e);
-      return defaultCmsContent;
     }
   },
 
   /**
    * Get store operational settings
    */
-  getStoreSettings() {
+  async getStoreSettings() {
     try {
-      const saved = localStorage.getItem(SETTINGS_STORAGE_KEY);
-      return saved ? { ...defaultStoreSettings, ...JSON.parse(saved) } : defaultStoreSettings;
-    } catch (e) {
-      return defaultStoreSettings;
+      const settings = await apiClient.get('/settings');
+      return settings || defaultStoreSettings;
+    } catch (err) {
+      try {
+        const saved = localStorage.getItem(SETTINGS_STORAGE_KEY);
+        return saved ? { ...defaultStoreSettings, ...JSON.parse(saved) } : defaultStoreSettings;
+      } catch (e) {
+        return defaultStoreSettings;
+      }
     }
   },
 
   /**
    * Update store operational settings
    */
-  updateStoreSettings(newSettings) {
+  async updateStoreSettings(newSettings) {
     try {
-      const current = this.getStoreSettings();
-      const merged = { ...current, ...newSettings };
+      const updated = await apiClient.put('/admin/settings', newSettings);
+      return updated;
+    } catch (err) {
+      const merged = { ...defaultStoreSettings, ...newSettings };
       localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(merged));
       return merged;
-    } catch (e) {
-      console.error('Failed to save store settings:', e);
-      return defaultStoreSettings;
     }
   },
 };

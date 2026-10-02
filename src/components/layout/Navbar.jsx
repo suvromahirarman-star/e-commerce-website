@@ -236,6 +236,7 @@ export function Navbar({ onOpenSearch, onOpenMobileMenu }) {
             <button
               type="button"
               onClick={onOpenSearch}
+              aria-label="Search products"
               className="hidden lg:flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium text-neutral-500 hover:text-neutral-950 bg-[#F8F8F8] hover:bg-[#FFF8F3] hover:border-[#FF6B2C]/40 border border-[#EAEAEA] transition-all cursor-pointer"
               title="Search products (Ctrl + K)"
             >

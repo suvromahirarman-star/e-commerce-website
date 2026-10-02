@@ -1,7 +1,8 @@
 /**
- * Category Service (API-Ready Abstraction Layer)
+ * Category Service (API-Connected Layer)
  */
 
+import { apiClient } from './apiClient';
 import { mockCategories } from '../data/mockCategories';
 
 const STORAGE_KEY = 'aura_custom_categories';
@@ -17,53 +18,64 @@ function getStoredCategories() {
   }
 }
 
-function saveStoredCategories(categories) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(categories));
-  } catch (e) {
-    console.error('Failed to save categories to localStorage:', e);
-  }
-}
-
 export const categoryService = {
   async getCategories() {
-    await new Promise((resolve) => setTimeout(resolve, 40));
-    return getStoredCategories();
+    try {
+      const categories = await apiClient.get('/categories');
+      return Array.isArray(categories) ? categories : getStoredCategories();
+    } catch (err) {
+      return getStoredCategories();
+    }
   },
 
   async getCategoryBySlug(slug) {
-    await new Promise((resolve) => setTimeout(resolve, 40));
-    const categories = getStoredCategories();
-    return categories.find((c) => c.slug === slug) || null;
+    try {
+      return await apiClient.get(`/categories/${slug}`);
+    } catch (err) {
+      const categories = getStoredCategories();
+      return categories.find((c) => c.slug === slug) || null;
+    }
   },
 
   async createCategory(categoryData) {
-    const categories = getStoredCategories();
-    const newCategory = {
-      ...categoryData,
-      id: `cat-${Date.now()}`,
-      slug: (categoryData.name || 'category')
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/(^-|-$)/g, ''),
-      itemCount: 0,
-    };
-    const updated = [...categories, newCategory];
-    saveStoredCategories(updated);
-    return newCategory;
+    try {
+      return await apiClient.post('/admin/categories', categoryData);
+    } catch (err) {
+      const categories = getStoredCategories();
+      const newCategory = {
+        ...categoryData,
+        id: `cat-${Date.now()}`,
+        slug: (categoryData.name || 'category')
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, ''),
+        itemCount: 0,
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([...categories, newCategory]));
+      return newCategory;
+    }
   },
 
   async updateCategory(id, updatedFields) {
-    const categories = getStoredCategories();
-    const updated = categories.map((c) => (c.id === id ? { ...c, ...updatedFields } : c));
-    saveStoredCategories(updated);
-    return updated.find((c) => c.id === id);
+    try {
+      return await apiClient.patch(`/admin/categories/${id}`, updatedFields);
+    } catch (err) {
+      const categories = getStoredCategories();
+      const updated = categories.map((c) => (c.id === id ? { ...c, ...updatedFields } : c));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      return updated.find((c) => c.id === id);
+    }
   },
 
   async deleteCategory(id) {
-    const categories = getStoredCategories();
-    const updated = categories.filter((c) => c.id !== id);
-    saveStoredCategories(updated);
-    return true;
+    try {
+      await apiClient.delete(`/admin/categories/${id}`);
+      return true;
+    } catch (err) {
+      const categories = getStoredCategories();
+      const updated = categories.filter((c) => c.id !== id);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      return true;
+    }
   },
 };

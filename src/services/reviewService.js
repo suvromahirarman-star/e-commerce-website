@@ -1,7 +1,8 @@
 /**
- * Review Service (API-Ready Abstraction Layer)
+ * Review Service (API-Connected Layer)
  */
 
+import { apiClient } from './apiClient';
 import { mockReviews } from '../data/mockReviews';
 
 const STORAGE_KEY = 'aura_custom_reviews';
@@ -17,51 +18,63 @@ function getStoredReviews() {
   }
 }
 
-function saveStoredReviews(reviews) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
-  } catch (e) {
-    console.error('Failed to save reviews to localStorage:', e);
-  }
-}
-
 export const reviewService = {
   async getReviewsByProductId(productId) {
-    await new Promise((resolve) => setTimeout(resolve, 40));
-    const reviews = getStoredReviews();
-    return reviews.filter((r) => r.productId === productId);
+    try {
+      const res = await apiClient.get(`/reviews/product/${productId}`);
+      return Array.isArray(res) ? res : [];
+    } catch (err) {
+      const reviews = getStoredReviews();
+      return reviews.filter((r) => r.productId === productId);
+    }
   },
 
-  async getAllReviews() {
-    await new Promise((resolve) => setTimeout(resolve, 50));
-    return getStoredReviews();
+  async getAllReviews(options = {}) {
+    try {
+      const res = await apiClient.get('/admin/reviews', options);
+      return Array.isArray(res) ? res : [];
+    } catch (err) {
+      return getStoredReviews();
+    }
   },
 
   async addReview(reviewData) {
-    const reviews = getStoredReviews();
-    const newReview = {
-      ...reviewData,
-      id: `rev-${Date.now()}`,
-      date: new Date().toISOString().slice(0, 10),
-      verified: true,
-      status: 'Approved',
-    };
-    const updated = [newReview, ...reviews];
-    saveStoredReviews(updated);
-    return newReview;
+    try {
+      return await apiClient.post('/reviews', reviewData);
+    } catch (err) {
+      const reviews = getStoredReviews();
+      const newReview = {
+        ...reviewData,
+        id: `rev-${Date.now()}`,
+        date: new Date().toISOString().slice(0, 10),
+        verified: true,
+        status: 'Approved',
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([newReview, ...reviews]));
+      return newReview;
+    }
   },
 
   async updateReviewStatus(id, status) {
-    const reviews = getStoredReviews();
-    const updated = reviews.map((r) => (r.id === id ? { ...r, status } : r));
-    saveStoredReviews(updated);
-    return updated.find((r) => r.id === id);
+    try {
+      return await apiClient.patch(`/admin/reviews/${id}/status`, { status });
+    } catch (err) {
+      const reviews = getStoredReviews();
+      const updated = reviews.map((r) => (r.id === id ? { ...r, status } : r));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      return updated.find((r) => r.id === id);
+    }
   },
 
   async deleteReview(id) {
-    const reviews = getStoredReviews();
-    const updated = reviews.filter((r) => r.id !== id);
-    saveStoredReviews(updated);
-    return true;
+    try {
+      await apiClient.delete(`/admin/reviews/${id}`);
+      return true;
+    } catch (err) {
+      const reviews = getStoredReviews();
+      const updated = reviews.filter((r) => r.id !== id);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      return true;
+    }
   },
 };

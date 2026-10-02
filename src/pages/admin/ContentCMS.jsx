@@ -20,8 +20,13 @@ export function ContentCMS() {
   const { showToast } = useToast();
 
   useEffect(() => {
-    const data = adminService.getHomepageContent();
-    setContent(data);
+    let mounted = true;
+    adminService.getHomepageContent().then((data) => {
+      if (mounted) setContent(data);
+    });
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const handleHeroChange = (field, value) => {
@@ -54,10 +59,11 @@ export function ContentCMS() {
     }));
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     setSaving(true);
     try {
-      adminService.updateHomepageContent(content);
+      const updated = await adminService.updateHomepageContent(content);
+      setContent(updated);
       showToast('Homepage CMS updated successfully', 'success');
     } catch (err) {
       showToast('Failed to save CMS configuration', 'error');
@@ -66,10 +72,10 @@ export function ContentCMS() {
     }
   };
 
-  const handleReset = () => {
+  const handleReset = async () => {
     if (!window.confirm('Reset all homepage CMS content to default factory values?')) return;
     localStorage.removeItem('aura_homepage_cms');
-    const fresh = adminService.getHomepageContent();
+    const fresh = await adminService.getHomepageContent();
     setContent(fresh);
     showToast('Reset to default content', 'info');
   };

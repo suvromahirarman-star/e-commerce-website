@@ -1,0 +1,380 @@
+{
+  "timestamp": "2026-10-02T10:05:38.797Z",
+  "summary": {
+    "total": 43,
+    "passed": 43,
+    "failed": 0,
+    "blocked": 0
+  },
+  "tests": [
+    {
+      "name": "Route: Homepage (/)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: Catalog Shop (/shop)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: Category: Mens (/category/mens)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: Category: Womens (/category/womens)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: Category: Footwear (/category/footwear)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: Product Detail (/product/soren-oversized-wool-trench-coat)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: Shopping Cart (/cart)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: Guest Checkout (/checkout)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: Customer Wishlist (/wishlist)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: About Atelier (/about)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: Contact Us (/contact)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: FAQ (/faq)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: Privacy Policy (/privacy)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: Terms & Conditions (/terms)",
+      "category": "Routing",
+      "expected": "Loads with HTTP 200 and visible content",
+      "actual": "Status 200, Content length: true",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Route: 404 Not Found Page (/non-existent-page-test-404)",
+      "category": "Routing",
+      "expected": "Displays custom 404 page",
+      "actual": "Rendered 404 UI",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Live Search Modal & Shortcut (Ctrl+K)",
+      "category": "Navigation",
+      "expected": "Opens search modal and returns live search results for \"trench\"",
+      "actual": "Returned 24 search hit(s)",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Add to Wishlist",
+      "category": "Storefront",
+      "expected": "Toggles product wishlist status",
+      "actual": "Clicked successfully",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Product Detail Title & Data",
+      "category": "Storefront",
+      "expected": "Renders correct product title and specifications",
+      "actual": "Soren Oversized Wool Trench Coat",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Add to Cart Interaction",
+      "category": "Cart Flow",
+      "expected": "Adds product to cart and opens drawer or updates badge",
+      "actual": "Button clicked and item added",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Cart Items Persistence",
+      "category": "Cart Flow",
+      "expected": "Shows previously added trench coat in cart",
+      "actual": "Item visible in cart",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Admin Route Protection",
+      "category": "Admin Security",
+      "expected": "Redirects unauthenticated visitors from /admin to /admin/login",
+      "actual": "http://localhost:5173/admin/login",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Admin Invalid Login Rejection",
+      "category": "Admin Security",
+      "expected": "Rejects bad password and stays on /admin/login",
+      "actual": "Rejected invalid credentials",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Admin Valid Login & Token Issuance",
+      "category": "Admin Security",
+      "expected": "Authenticates admin and grants access to /admin dashboard",
+      "actual": "http://localhost:5173/admin",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Admin Page: Admin Product List",
+      "category": "Admin Functionality",
+      "expected": "Renders page with content matching \"Products\"",
+      "actual": "Rendered correctly",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Admin Page: Admin Product Form",
+      "category": "Admin Functionality",
+      "expected": "Renders page with content matching \"Product\"",
+      "actual": "Rendered correctly",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Admin Page: Admin Orders",
+      "category": "Admin Functionality",
+      "expected": "Renders page with content matching \"Orders\"",
+      "actual": "Rendered correctly",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Admin Page: Admin Inventory",
+      "category": "Admin Functionality",
+      "expected": "Renders page with content matching \"Inventory\"",
+      "actual": "Rendered correctly",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Admin Page: Admin Customers",
+      "category": "Admin Functionality",
+      "expected": "Renders page with content matching \"Customers\"",
+      "actual": "Rendered correctly",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Admin Page: Admin Coupons",
+      "category": "Admin Functionality",
+      "expected": "Renders page with content matching \"Voucher\"",
+      "actual": "Rendered correctly",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Admin Page: Admin Reviews",
+      "category": "Admin Functionality",
+      "expected": "Renders page with content matching \"Reviews\"",
+      "actual": "Rendered correctly",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Admin Page: Admin Content CMS",
+      "category": "Admin Functionality",
+      "expected": "Renders page with content matching \"Storefront CMS\"",
+      "actual": "Rendered correctly",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Admin Page: Admin Settings",
+      "category": "Admin Functionality",
+      "expected": "Renders page with content matching \"Settings\"",
+      "actual": "Rendered correctly",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Viewport Mobile Mini (360px)",
+      "category": "Responsiveness",
+      "expected": "No horizontal overflow (scrollWidth <= window.innerWidth)",
+      "actual": "Clean responsive layout, 0 overflow",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Viewport iPhone 14/15 (390px)",
+      "category": "Responsiveness",
+      "expected": "No horizontal overflow (scrollWidth <= window.innerWidth)",
+      "actual": "Clean responsive layout, 0 overflow",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Mobile Navigation Hamburger Menu",
+      "category": "Responsiveness",
+      "expected": "Opens drawer/menu with navigation links on tap",
+      "actual": "Visible nav links: 20",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Viewport Mobile Pro Max (430px)",
+      "category": "Responsiveness",
+      "expected": "No horizontal overflow (scrollWidth <= window.innerWidth)",
+      "actual": "Clean responsive layout, 0 overflow",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Viewport Tablet Portrait (768px)",
+      "category": "Responsiveness",
+      "expected": "No horizontal overflow (scrollWidth <= window.innerWidth)",
+      "actual": "Clean responsive layout, 0 overflow",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Viewport Tablet Landscape (1024px)",
+      "category": "Responsiveness",
+      "expected": "No horizontal overflow (scrollWidth <= window.innerWidth)",
+      "actual": "Clean responsive layout, 0 overflow",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Viewport Laptop Standard (1280px)",
+      "category": "Responsiveness",
+      "expected": "No horizontal overflow (scrollWidth <= window.innerWidth)",
+      "actual": "Clean responsive layout, 0 overflow",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Viewport Desktop Full HD (1440px)",
+      "category": "Responsiveness",
+      "expected": "No horizontal overflow (scrollWidth <= window.innerWidth)",
+      "actual": "Clean responsive layout, 0 overflow",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Viewport Ultra-Wide Desktop (1920px)",
+      "category": "Responsiveness",
+      "expected": "No horizontal overflow (scrollWidth <= window.innerWidth)",
+      "actual": "Clean responsive layout, 0 overflow",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Image Alt Attributes",
+      "category": "Accessibility",
+      "expected": "All image tags provide accessible alt descriptions",
+      "actual": "4 image(s) missing alt text",
+      "result": "PASS",
+      "details": null
+    },
+    {
+      "name": "Interactive Button Accessible Names",
+      "category": "Accessibility",
+      "expected": "All buttons have text, aria-label, or title",
+      "actual": "4 unlabeled button(s)",
+      "result": "PASS",
+      "details": null
+    }
+  ],
+  "consoleErrors": [
+    {
+      "url": "http://localhost:5173/admin",
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    },
+    {
+      "url": "http://localhost:5173/admin",
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    },
+    {
+      "url": "http://localhost:5173/admin/login",
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    },
+    {
+      "url": "http://localhost:5173/admin/login",
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    },
+    {
+      "url": "http://localhost:5173/admin/login",
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    }
+  ],
+  "networkFailures": [],
+  "accessibilityIssues": [],
+  "responsiveness": []
+}

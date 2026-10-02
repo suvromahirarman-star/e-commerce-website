@@ -23,8 +23,13 @@ export function Settings() {
   const { showToast } = useToast();
 
   useEffect(() => {
-    const data = adminService.getStoreSettings();
-    setSettings(data);
+    let mounted = true;
+    adminService.getStoreSettings().then((data) => {
+      if (mounted) setSettings(data);
+    });
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const handleChange = (field, value) => {
@@ -34,11 +39,12 @@ export function Settings() {
     }));
   };
 
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e?.preventDefault();
     setSaving(true);
     try {
-      adminService.updateStoreSettings(settings);
+      const updated = await adminService.updateStoreSettings(settings);
+      setSettings(updated);
       showToast('Store settings updated successfully', 'success');
     } catch (err) {
       showToast('Failed to save settings', 'error');
@@ -47,10 +53,10 @@ export function Settings() {
     }
   };
 
-  const handleReset = () => {
+  const handleReset = async () => {
     if (!window.confirm('Reset all store configurations to default factory values?')) return;
     localStorage.removeItem('aura_store_settings');
-    const fresh = adminService.getStoreSettings();
+    const fresh = await adminService.getStoreSettings();
     setSettings(fresh);
     showToast('Reset to default configurations', 'info');
   };

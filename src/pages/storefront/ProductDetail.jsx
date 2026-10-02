@@ -233,13 +233,18 @@ export function ProductDetail() {
                     key={idx}
                     type="button"
                     onClick={() => setActiveImage(idx)}
+                    aria-label={`View photo ${idx + 1} of ${product.name}`}
                     className={`relative w-20 h-24 rounded-2xl overflow-hidden border-2 transition-all flex-shrink-0 cursor-pointer ${
                       activeImage === idx
                         ? 'border-[#FF6B2C] ring-2 ring-[#FF6B2C]/20 shadow-md'
                         : 'border-transparent opacity-75 hover:opacity-100'
                     }`}
                   >
-                    <img src={img} alt="" className="w-full h-full object-cover" />
+                    <img
+                      src={img}
+                      alt={`${product.name} photo ${idx + 1}`}
+                      className="w-full h-full object-cover"
+                    />
                   </button>
                 ))}
               </div>

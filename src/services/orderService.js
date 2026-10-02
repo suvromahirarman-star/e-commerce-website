@@ -1,8 +1,9 @@
 /**
- * Order Service (API-Ready Abstraction Layer)
+ * Order Service (API-Connected Layer)
  * Supports frictionless guest checkout and admin order status workflow
  */
 
+import { apiClient } from './apiClient';
 import { mockOrders } from '../data/mockOrders';
 
 const STORAGE_KEY = 'aura_custom_orders';
@@ -18,89 +19,101 @@ function getStoredOrders() {
   }
 }
 
-function saveStoredOrders(orders) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
-  } catch (e) {
-    console.error('Failed to save orders to localStorage:', e);
-  }
-}
-
 export const orderService = {
   /**
-   * Guest Checkout: Create a new order without requiring customer account
+   * Guest Checkout: Post order to authoritative backend engine
    */
   async createGuestOrder(orderPayload) {
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
-    const orders = getStoredOrders();
-    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-    const newOrder = {
-      ...orderPayload,
-      id: `AUR-${new Date().getFullYear()}-${randomSuffix}`,
-      orderStatus: 'Pending',
-      paymentStatus: orderPayload.paymentMethod === 'Cash on Delivery' ? 'Pending' : 'Paid',
-      createdAt: new Date().toISOString(),
-    };
-
-    const updated = [newOrder, ...orders];
-    saveStoredOrders(updated);
-    return newOrder;
+    try {
+      const created = await apiClient.post('/orders', orderPayload);
+      return created;
+    } catch (err) {
+      console.warn('Backend order submission offline, using local simulation:', err.message);
+      const orders = getStoredOrders();
+      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+      const newOrder = {
+        ...orderPayload,
+        id: `AUR-${new Date().getFullYear()}-${randomSuffix}`,
+        orderStatus: 'Pending',
+        paymentStatus: orderPayload.paymentMethod === 'Cash on Delivery' ? 'Pending' : 'Paid',
+        createdAt: new Date().toISOString(),
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([newOrder, ...orders]));
+      return newOrder;
+    }
   },
 
   /**
    * Get all orders with optional search and status filter
    */
   async getOrders(filters = {}) {
-    await new Promise((resolve) => setTimeout(resolve, 60));
-    let orders = [...getStoredOrders()];
+    try {
+      const res = await apiClient.get('/admin/orders', filters);
+      const orders = res?.orders || res;
+      return Array.isArray(orders) ? orders : getStoredOrders();
+    } catch (err) {
+      let orders = [...getStoredOrders()];
 
-    if (filters.status && filters.status !== 'all') {
-      orders = orders.filter(
-        (o) => o.orderStatus.toLowerCase() === filters.status.toLowerCase()
-      );
+      if (filters.status && filters.status !== 'all') {
+        orders = orders.filter(
+          (o) => o.orderStatus?.toLowerCase() === filters.status.toLowerCase()
+        );
+      }
+
+      if (filters.search) {
+        const q = filters.search.toLowerCase().trim();
+        orders = orders.filter(
+          (o) =>
+            o.id.toLowerCase().includes(q) ||
+            o.customer?.fullName?.toLowerCase().includes(q) ||
+            o.customer?.phone?.toLowerCase().includes(q) ||
+            o.customer?.email?.toLowerCase().includes(q)
+        );
+      }
+
+      return orders;
     }
-
-    if (filters.search) {
-      const q = filters.search.toLowerCase().trim();
-      orders = orders.filter(
-        (o) =>
-          o.id.toLowerCase().includes(q) ||
-          o.customer.fullName.toLowerCase().includes(q) ||
-          o.customer.phone.toLowerCase().includes(q) ||
-          o.customer.email.toLowerCase().includes(q)
-      );
-    }
-
-    return orders;
   },
 
   /**
-   * Get order details by order ID
+   * Get order details by order ID / number
    */
   async getOrderById(orderId) {
-    await new Promise((resolve) => setTimeout(resolve, 50));
-    const orders = getStoredOrders();
-    return orders.find((o) => o.id === orderId) || null;
+    try {
+      return await apiClient.get(`/orders/${orderId}`);
+    } catch (err) {
+      try {
+        return await apiClient.get(`/admin/orders/${orderId}`);
+      } catch (adminErr) {
+        const orders = getStoredOrders();
+        return orders.find((o) => o.id === orderId) || null;
+      }
+    }
   },
 
   /**
    * Admin: Update order fulfillment status
    */
   async updateOrderStatus(orderId, newStatus) {
-    const orders = getStoredOrders();
-    const updated = orders.map((o) => {
-      if (o.id === orderId) {
-        return {
-          ...o,
-          orderStatus: newStatus,
-          updatedAt: new Date().toISOString(),
-          deliveredAt: newStatus === 'Delivered' ? new Date().toISOString() : o.deliveredAt,
-        };
-      }
-      return o;
-    });
-    saveStoredOrders(updated);
-    return updated.find((o) => o.id === orderId);
+    try {
+      return await apiClient.patch(`/admin/orders/${orderId}/status`, {
+        orderStatus: newStatus,
+      });
+    } catch (err) {
+      const orders = getStoredOrders();
+      const updated = orders.map((o) => {
+        if (o.id === orderId) {
+          return {
+            ...o,
+            orderStatus: newStatus,
+            updatedAt: new Date().toISOString(),
+            deliveredAt: newStatus === 'Delivered' ? new Date().toISOString() : o.deliveredAt,
+          };
+        }
+        return o;
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      return updated.find((o) => o.id === orderId);
+    }
   },
 };
